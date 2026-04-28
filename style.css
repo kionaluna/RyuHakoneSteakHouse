@@ -2334,7 +2334,7 @@ body {
 }
 
 .value-number {
-  color: var(--final-gold);
+  color: var(--color-red);
   border-bottom-color: var(--final-line);
 }
 
@@ -2572,11 +2572,14 @@ body {
   --final-gold: #ffffff;
 }
 
-.value-number,
 .section-title::after,
 .showcase-title::after {
   color: #ffffff;
   background: #ffffff;
+}
+
+.value-number {
+  background: transparent;
 }
 
 html:not([data-theme='dark']),
