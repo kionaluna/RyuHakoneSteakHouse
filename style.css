@@ -5048,3 +5048,212 @@ html[data-theme='dark'] .location-map iframe {
 html[data-theme='dark'] .visit-last-order {
   color: rgba(255, 255, 255, 0.68);
 }
+
+/* Menu board layout */
+.menu-extras {
+  gap: clamp(1.6rem, 3.2vw, 2.6rem);
+}
+
+.menu-board {
+  display: grid;
+  gap: clamp(0.85rem, 1.7vw, 1.15rem);
+}
+
+.menu-group-heading {
+  margin: 0;
+}
+
+.menu-group-heading .drinks-menu-title {
+  font-size: clamp(1.35rem, 2.35vw, 1.9rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.menu-board-grid,
+.drinks-layout.menu-board-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 0;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.menu-board-panel,
+.menu-board .ala-carte-menu,
+.menu-board .drinks-menu {
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(1rem, 1.75vw, 1.4rem);
+  background: #ffffff;
+  border: 0;
+}
+
+.menu-board-panel + .menu-board-panel {
+  border-left: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.menu-board .food-card--ala,
+.menu-board .food-card--set,
+.menu-board .food-card--dish {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.menu-board-panel-title {
+  font-size: clamp(1.05rem, 1.65vw, 1.45rem);
+  line-height: 1.05;
+  text-transform: none;
+}
+
+.menu-board .menu-list,
+html[data-theme='dark'] .menu-board .menu-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  background: transparent;
+  border: 0;
+}
+
+.menu-board .menu-item,
+html:not([data-theme='dark']) .menu-board .menu-item,
+html:not([data-theme='dark']) .menu-board .menu-item:last-child,
+html[data-theme='dark'] .menu-board .menu-item,
+html[data-theme='dark'] .menu-board .menu-item:last-child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  min-height: 0;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.menu-board .menu-item:last-child,
+html[data-theme='dark'] .menu-board .menu-item:last-child {
+  border-bottom: 0;
+}
+
+.menu-board .menu-item-image {
+  display: none;
+}
+
+.menu-board .menu-item-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 0;
+}
+
+.menu-board .menu-item-title {
+  font-size: clamp(0.68rem, 0.78vw, 0.78rem);
+  line-height: 1.25;
+  min-height: 0;
+}
+
+.menu-board .menu-item-text {
+  color: rgba(17, 17, 17, 0.7);
+  font-size: clamp(0.62rem, 0.68vw, 0.7rem);
+  line-height: 1.45;
+  padding: 0.24rem 0 0;
+}
+
+.menu-board .menu-item-price,
+.menu-board .drinks-item-price {
+  font-size: clamp(0.72rem, 0.92vw, 0.86rem);
+  line-height: 1.1;
+}
+
+.menu-board .drinks-menu-title:not(.menu-board-panel-title) {
+  font-size: clamp(0.95rem, 1.35vw, 1.18rem);
+  line-height: 1.05;
+}
+
+.menu-board .menu-group-heading .drinks-menu-title {
+  font-size: clamp(1.35rem, 2.35vw, 1.9rem);
+}
+
+.menu-board .showcase-label {
+  font-size: clamp(0.44rem, 0.52vw, 0.54rem);
+  letter-spacing: 0.18em;
+}
+
+.menu-board .drinks-item {
+  gap: 1rem;
+  padding: 0.48rem 0;
+}
+
+.menu-board .drinks-item-name {
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+  line-height: 1.25;
+}
+
+.menu-board .drinks-item-sub,
+.menu-board .ala-carte-desc {
+  font-size: clamp(0.6rem, 0.66vw, 0.68rem);
+  line-height: 1.4;
+}
+
+.menu-section .menu-intro {
+  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+}
+
+.menu-board .drinks-menu--separate {
+  margin-top: 0;
+}
+
+html[data-theme='dark'] .menu-board-grid,
+html[data-theme='dark'] .drinks-layout.menu-board-grid {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+html[data-theme='dark'] .menu-board-panel,
+html[data-theme='dark'] .menu-board .ala-carte-menu,
+html[data-theme='dark'] .menu-board .drinks-menu {
+  background: #000000;
+}
+
+html[data-theme='dark'] .menu-board-panel + .menu-board-panel {
+  border-left-color: rgba(255, 255, 255, 0.22);
+}
+
+html[data-theme='dark'] .menu-board .menu-item {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 900px) {
+  .menu-board-grid,
+  .drinks-layout.menu-board-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-board-panel,
+  .menu-board .ala-carte-menu,
+  .menu-board .drinks-menu {
+    min-height: 0;
+  }
+
+  .menu-board-panel + .menu-board-panel {
+    border-left: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+  }
+
+  html[data-theme='dark'] .menu-board-panel + .menu-board-panel {
+    border-top-color: rgba(255, 255, 255, 0.22);
+  }
+}
+
+@media (max-width: 560px) {
+  .menu-board .menu-item-head,
+  .menu-board .drinks-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .menu-board .menu-item-price,
+  .menu-board .drinks-item-price,
+  .menu-board .ala-carte-price-stack {
+    justify-self: start;
+  }
+}
