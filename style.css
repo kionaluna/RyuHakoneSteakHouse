@@ -4966,18 +4966,18 @@ html[data-theme='dark'] .visit-last-order {
   .location-details {
     width: 100%;
     margin: 0 auto;
-    grid-template-columns: minmax(400px, 0.95fr) minmax(560px, 1.05fr);
+    grid-template-columns: minmax(400px, 1fr) minmax(0, 540px);
     gap: clamp(1.5rem, 2vw, 2rem);
     align-items: stretch;
   }
 
   .location-address,
   .location-map {
-    min-height: 390px;
+    min-height: 360px;
   }
 
   .location-map {
-    height: 390px;
+    height: 360px;
   }
 
   .location-address {
