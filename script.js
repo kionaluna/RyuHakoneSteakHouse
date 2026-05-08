@@ -554,7 +554,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe sections for animation with slight stagger
-const revealTargets = document.querySelectorAll('.story-container, .story-image-large, .story-image-small, .vision-container, .vision-panel, .value-item, .menu-container, .menu-item, .drinks-menu, .location-container, .location-address, .location-map, .showcase-header');
+const revealTargets = document.querySelectorAll('.story-container, .story-image-large, .story-image-small, .vision-container, .vision-panel, .value-item, .menu-container, .menu-group-heading, .menu-board-panel, .menu-item, .drinks-item, .location-container, .location-address, .location-map, .showcase-header');
 revealTargets.forEach((el, index) => {
   if (prefersReducedMotion) {
     el.style.opacity = '1';
