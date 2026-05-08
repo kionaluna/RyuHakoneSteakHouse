@@ -4024,13 +4024,13 @@ html[data-theme='dark'] .location-map:hover {
 
 .story-image-large,
 .story-image-small {
-  background: var(--bg-surface);
+  background: transparent;
   height: auto;
   overflow: visible;
 }
 
 .story-image-grid {
-  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(280px, 1.42fr) minmax(0, 1fr);
   grid-template-rows: auto repeat(2, minmax(220px, auto));
   align-items: stretch;
 }
@@ -4040,7 +4040,7 @@ html[data-theme='dark'] .location-map:hover {
   grid-row: 1;
   justify-self: stretch;
   width: 100%;
-  aspect-ratio: 16 / 8;
+  aspect-ratio: 4 / 3;
 }
 
 .story-image-grid .story-image-small:nth-child(2) {
@@ -4048,7 +4048,7 @@ html[data-theme='dark'] .location-map:hover {
   grid-row: 2;
   justify-self: stretch;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
 }
 
 .story-image-grid .story-image-small:nth-child(3) {
@@ -4064,7 +4064,7 @@ html[data-theme='dark'] .location-map:hover {
   grid-row: 3;
   justify-self: stretch;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
 }
 
 .story-photo,
@@ -4073,6 +4073,8 @@ html[data-theme='dark'] .story-photo {
   height: 100%;
   object-fit: contain;
   object-position: center;
+  border: 0;
+  box-shadow: none;
   filter: none;
 }
 
