@@ -4025,10 +4025,28 @@ html[data-theme='dark'] .location-map:hover {
 .story-image-large,
 .story-image-small {
   background: var(--bg-surface);
+  height: auto;
+  overflow: visible;
+}
+
+.story-image-grid {
+  align-items: start;
+}
+
+.story-image-grid .story-image-small:nth-child(3) {
+  justify-self: end;
+  width: min(100%, 82%);
+}
+
+.story-image-grid .story-image-small:nth-child(4) {
+  justify-self: start;
+  width: 100%;
 }
 
 .story-photo,
 html[data-theme='dark'] .story-photo {
+  width: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
   filter: none;
