@@ -4960,24 +4960,24 @@ html[data-theme='dark'] .visit-last-order {
 
 @media (min-width: 861px) {
   .location-container {
-    max-width: 1120px;
+    max-width: 980px;
   }
 
   .location-details {
     width: 100%;
     margin: 0 auto;
-    grid-template-columns: minmax(400px, 1fr) minmax(0, 540px);
-    gap: clamp(1.5rem, 2vw, 2rem);
+    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+    gap: 0.9rem;
     align-items: stretch;
   }
 
   .location-address,
   .location-map {
-    min-height: 360px;
+    min-height: 430px;
   }
 
   .location-map {
-    height: 360px;
+    height: 430px;
   }
 
   .location-address {
