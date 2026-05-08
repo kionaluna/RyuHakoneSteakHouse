@@ -4960,25 +4960,39 @@ html[data-theme='dark'] .visit-last-order {
 
 @media (min-width: 861px) {
   .location-container {
-    max-width: 1280px;
+    max-width: 1180px;
   }
 
   .location-details {
-    grid-template-columns: minmax(420px, 0.95fr) minmax(620px, 1.35fr);
-    gap: clamp(2rem, 3vw, 3rem);
+    grid-template-columns: minmax(420px, 0.95fr) minmax(560px, 1.05fr);
+    gap: clamp(2rem, 2.6vw, 2.5rem);
     align-items: stretch;
   }
 
   .location-address,
   .location-map {
-    height: clamp(470px, 38vw, 560px);
+    height: clamp(390px, 31vw, 450px);
   }
 
   .location-address {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: clamp(2.2rem, 3vw, 3rem);
+    justify-content: flex-start;
+    padding: clamp(2rem, 2.5vw, 2.5rem);
+  }
+
+  .location-address p {
+    margin: 0 0 0.8rem;
+  }
+
+  .visit-schedule {
+    margin-top: 1.4rem;
+  }
+
+  .visit-schedule-days,
+  .visit-schedule-hours,
+  .visit-last-order {
+    margin: 0 0 0.55rem;
   }
 }
 
