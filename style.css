@@ -4022,6 +4022,23 @@ html[data-theme='dark'] .location-map:hover {
   transform: scale(1.06);
 }
 
+.story-image-large,
+.story-image-small {
+  background: var(--bg-surface);
+}
+
+.story-photo,
+html[data-theme='dark'] .story-photo {
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+}
+
+.story-image-large:hover .story-photo,
+.story-image-small:hover .story-photo {
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
