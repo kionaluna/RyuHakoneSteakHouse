@@ -4969,6 +4969,7 @@ html[data-theme='dark'] .visit-last-order {
     grid-template-columns: minmax(440px, 0.82fr) minmax(740px, 1.18fr);
     gap: clamp(1.5rem, 2vw, 2rem);
     align-items: stretch;
+    transform: translateX(clamp(-7rem, -5vw, -3rem));
   }
 
   .location-address,
