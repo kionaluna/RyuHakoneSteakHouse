@@ -4030,8 +4030,10 @@ html[data-theme='dark'] .location-map:hover {
 }
 
 .story-image-grid {
-  grid-template-columns: minmax(280px, 1.42fr) minmax(0, 1fr);
-  grid-template-rows: auto repeat(2, minmax(220px, auto));
+  max-width: 820px;
+  gap: 0.75rem;
+  grid-template-columns: minmax(230px, 0.82fr) minmax(0, 1fr);
+  grid-template-rows: auto repeat(2, auto);
   align-items: stretch;
 }
 
@@ -4056,7 +4058,9 @@ html[data-theme='dark'] .location-map:hover {
   grid-row: 2 / 4;
   justify-self: stretch;
   width: 100%;
+  min-height: 0;
   aspect-ratio: auto;
+  overflow: hidden;
 }
 
 .story-image-grid .story-image-small:nth-child(4) {
@@ -4080,8 +4084,8 @@ html[data-theme='dark'] .story-photo {
 
 .story-image-grid .story-image-small:nth-child(3) .story-photo {
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: 43% center;
 }
 
 .story-image-large:hover .story-photo,
