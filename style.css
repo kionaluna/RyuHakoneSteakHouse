@@ -4034,8 +4034,10 @@ html[data-theme='dark'] .location-map:hover {
 }
 
 .story-image-grid .story-image-small:nth-child(3) {
-  justify-self: end;
-  width: min(100%, 82%);
+  justify-self: stretch;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
 }
 
 .story-image-grid .story-image-small:nth-child(4) {
@@ -4050,6 +4052,12 @@ html[data-theme='dark'] .story-photo {
   object-fit: contain;
   object-position: center;
   filter: none;
+}
+
+.story-image-grid .story-image-small:nth-child(3) .story-photo {
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .story-image-large:hover .story-photo,
