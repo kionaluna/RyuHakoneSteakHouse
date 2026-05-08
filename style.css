@@ -4958,6 +4958,30 @@ html[data-theme='dark'] .visit-last-order {
   color: rgba(255, 255, 255, 0.68);
 }
 
+@media (min-width: 861px) {
+  .location-container {
+    max-width: 1280px;
+  }
+
+  .location-details {
+    grid-template-columns: minmax(420px, 0.95fr) minmax(620px, 1.35fr);
+    gap: clamp(2rem, 3vw, 3rem);
+    align-items: stretch;
+  }
+
+  .location-address,
+  .location-map {
+    height: clamp(470px, 38vw, 560px);
+  }
+
+  .location-address {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2.2rem, 3vw, 3rem);
+  }
+}
+
 /* Dark mode logo and hero fixes */
 html[data-theme='dark'] .hero-logo-card,
 html[data-theme='dark'] .footer-logo {
