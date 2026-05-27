@@ -827,6 +827,14 @@ body {
   color: var(--color-red-light);
 }
 
+.footer-reservation {
+  max-width: 560px;
+  margin: 0 auto 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.82;
+}
+
 .footer-copyright {
   font-size: 0.85rem;
   opacity: 0.6;
