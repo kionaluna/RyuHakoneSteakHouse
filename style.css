@@ -4968,29 +4968,33 @@ html[data-theme='dark'] .visit-last-order {
 
 @media (min-width: 861px) {
   .location-container {
-    max-width: 980px;
+    max-width: 1280px;
   }
 
   .location-details {
     width: 100%;
     margin: 0 auto;
-    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
-    gap: 0.9rem;
+    grid-template-columns: minmax(300px, 0.62fr) minmax(0, 1.55fr);
+    gap: clamp(1.25rem, 1.8vw, 1.75rem);
     align-items: stretch;
   }
 
   .location-address,
   .location-map {
-    min-height: 430px;
+    min-height: clamp(460px, 40vw, 560px);
+    border-color: #111111;
   }
 
   .location-map {
-    height: 430px;
+    height: clamp(460px, 40vw, 560px);
   }
 
   .location-address {
     padding: clamp(1.65rem, 2vw, 2rem);
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .location-address p {
@@ -5139,6 +5143,13 @@ html[data-theme='dark'] .scroll-toggle:focus-visible {
   grid-row: auto;
 }
 
+.menu-board .food-card--winter-set,
+.menu-board .food-card--winter-dish {
+  grid-column: 1 / -1;
+  border-left: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+}
+
 .menu-board-panel-title {
   font-size: clamp(1.05rem, 1.65vw, 1.45rem);
   line-height: 1.05;
@@ -5279,6 +5290,12 @@ html[data-theme='dark'] .menu-board-panel-note {
 
 html[data-theme='dark'] .menu-board-panel + .menu-board-panel {
   border-left-color: rgba(255, 255, 255, 0.22);
+}
+
+html[data-theme='dark'] .menu-board .food-card--winter-set,
+html[data-theme='dark'] .menu-board .food-card--winter-dish {
+  border-left: 0;
+  border-top-color: rgba(255, 255, 255, 0.22);
 }
 
 html[data-theme='dark'] .menu-board .menu-item {
