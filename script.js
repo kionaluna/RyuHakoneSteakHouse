@@ -4,9 +4,10 @@ const THEME_STORAGE_KEY = 'ryu-theme';
 const LANGUAGE_STORAGE_KEY = 'ryu-language';
 const themeToggle = document.querySelector('.theme-toggle');
 const languageToggle = document.querySelector('.language-toggle');
-const themeSensitiveLogos = document.querySelectorAll('.hero-mark, .footer-logo');
-const lightLogoSrc = 'Logo/Logo_Final.png';
-const darkLogoSrc = 'Logo/Logo_Final_dark.png';
+// the footer is dark in both themes, so it always uses the light-on-dark logo
+const themeSensitiveLogos = document.querySelectorAll('.hero-mark');
+const lightLogoSrc = 'Logo/web/logo.webp';
+const darkLogoSrc = 'Logo/web/logo-dark.webp';
 
 const translations = {
   en: {
@@ -46,89 +47,72 @@ const translations = {
     'value.5.title': 'Excellence',
     'value.5.text': 'We are always learning and looking for ways to improve our skills to make our food and restaurant better every day.',
     'menu.marker': 'MENU',
-    'menu.label': 'Japanese and Filipino Comfort',
     'menu.title': "WHAT'S ON THE MENU?",
     'menu.intro': 'From comforting set meals to shareable favorites and drinks, discover the flavors that make every visit feel special. All listed prices include tax.',
-    'menu.group.set': 'Set Meals',
-    'menu.group.ala': 'Ala Carte',
-    'menu.group.drinks': 'Drinks',
-    'menu.panel.japaneseSets': 'Japanese set meals',
-    'menu.panel.japaneseIncludes': 'with rice, soup, and salad',
-    'menu.1.title': 'Japanese Beef Steak Set (Picanha)',
-    'menu.1.text': 'A perfectly tender cut from the upper rump, known for generous marbling and rich flavor.',
-    'menu.2.title': 'Japanese Beef Steak Set (Rump)',
-    'menu.2.text': 'A lean rump cut that is tender and full of deep beef flavor.',
-    'menu.3.title': 'Japanese Hamburg Set',
-    'menu.3.text': 'A tender and flavorful patty that melts in your mouth. A classic Japanese comfort dish served with our savory signature sauce.',
-    'menu.4.title': 'Japanese Pork Belly Yakiniku Set',
-    'menu.4.text': 'A juicy cut of grilled meat characterized by the sweetness of its fat and rich meaty flavor.',
-    'ala.label': 'Japanese Favorites',
-    'ala.title': 'Japanese Ala Carte',
-    'ala.1.name': 'Japanese Beef Steak (Picanha)',
-    'ala.1.desc': 'A perfectly tender cut from the upper rump, known for generous marbling and rich flavor.',
-    'ala.2.name': 'Japanese Beef Steak (Rump)',
-    'ala.2.desc': 'A lean rump cut that is tender and full of deep beef flavor.',
-    'ala.3.name': 'Japanese Hamburg',
-    'ala.3.desc': 'A tender and flavorful patty that melts in your mouth. A classic Japanese comfort dish served with our savory signature sauce.',
-    'ala.4.name': 'Japanese Pork Belly Yakiniku',
-    'ala.4.desc': 'A juicy cut of grilled meat characterized by the sweetness of its fat and rich meaty flavor.',
-    'ala.5.name': 'Miso Soup',
-    'ala.5.desc': 'A warm, savory, and comforting Japanese soup made with a traditional miso broth.',
-    'ala.6.name': 'Rice',
-    'ala.6.desc': 'Rice (Small, Medium, Large)',
-    'set.label': 'Served as Set Meals',
-    'set.title': 'Filipino set meals',
-    'set.includes': 'with rice, soup, and salad',
-    'set.1.name': 'Pork Adobo Set',
-    'set.1.desc': 'A typical Filipino home-style dish of pork simmered in vinegar, soy sauce, garlic, and other spices.',
-    'set.2.name': 'Filipino-style Fried Chicken Set',
-    'set.2.desc': 'It features a crispy texture with a crispy skin and juicy flesh.',
-    'set.3.name': 'Lumpiang Togue Set',
-    'set.3.desc': 'A Filipino spring roll filled with bean sprouts and vegetables, wrapped in a thin pastry and deep-fried until crisp.',
-    'winterSet.label': 'Served as Set Meals',
-    'winterSet.title': 'Winter Series',
-    'winterSet.includes': 'with rice, soup, and salad',
-    'winterSet.1.name': 'Japanese Beef Stew',
-    'winterSet.1.desc': 'A Japanese stew featuring tender beef and vegetables, simmered until soft and full of flavor.',
-    'winterSet.2.name': 'Filipino Beef Caldereta',
-    'winterSet.2.desc': 'A rich Filipino stew dish made with beef and vegetables simmered in tomato sauce.',
-    'dish.label': 'Filipino Classics',
-    'dish.title': 'Filipino Dish',
-    'dish.1.name': 'Pork Adobo',
-    'dish.1.desc': 'A typical Filipino home-style dish of pork simmered in vinegar, soy sauce, garlic, and other spices.',
-    'dish.2.name': 'Filipino-style Fried Chicken',
-    'dish.2.desc': 'It features a crispy texture with a crispy skin and juicy flesh.',
-    'dish.3.name': 'Lumpiang Togue',
-    'dish.3.desc': 'A Filipino spring roll filled with bean sprouts and vegetables, wrapped in a thin pastry and deep-fried until crisp.',
-    'winterDish.label': 'Winter Series',
-    'winterDish.title': 'Winter Series',
-    'winterDish.1.name': 'Japanese Beef Stew',
-    'winterDish.1.desc': 'A Japanese stew featuring tender beef and vegetables, simmered until soft and full of flavor.',
-    'winterDish.2.name': 'Filipino Beef Caldereta',
-    'winterDish.2.desc': 'A rich Filipino stew dish made with beef and vegetables simmered in tomato sauce.',
-    'drinks.label': 'Beer, Sake, & Wine',
-    'drinks.title': 'Alcoholic Drinks',
-    'drink.1.name': 'Kirin Beer 500 ML',
-    'drink.2.name': 'Non-Alcohol Beer',
-    'drink.3.name': 'Whiskey Highball',
-    'drink.4.name': 'Sake (Glass)',
-    'drink.5.name': 'Plum Wine',
-    'drink.6.name': 'Red Wine Glass',
-    'drink.7.name': 'Red Wine Bottle',
-    'drink.8.name': 'White Wine Glass',
-    'drink.9.name': 'White Wine Bottle',
-    'soft.label': 'Coffee, Tea, & Juice',
-    'soft.title': 'Soft Drinks',
-    'soft.1.name': 'Coke',
-    'soft.2.name': 'Ginger Ale',
-    'soft.3.name': '100% Orange Juice',
-    'soft.4.name': 'Oolong Tea',
-    'soft.5.name': 'Green Tea',
-    'soft.6.name': 'Hot Coffee',
-    'soft.7.name': 'Iced Coffee',
-    'dessert.title': 'Dessert',
-    'dessert.1.name': "Juna's Homemade Leche Flan (Whole)",
-    'dessert.2.name': "Juna's Homemade Leche Flan (Half)",
+    "menu.label": "Steak & Japanese Comfort",
+    "menu.group.set": "Set Menu",
+    "menu.set.note": "Served with rice, soup, and salad",
+    "menu.group.ala": "Ala Carte",
+    "menu.group.sides": "Sides",
+    "menu.group.drinks": "Drinks",
+    "menu.group.dessert": "Dessert",
+    "dish.set1": "Wagyu Steak Set (Sirloin)",
+    "dish.set2": "Hakone Seiroku Beef Set (Rump)",
+    "dish.set3": "Hakone Seiroku Beef Set (Picanha)",
+    "dish.set4": "Hakone Seiroku Beef Set (Top Blade)",
+    "dish.set5": "Cheese-Filled Hamburg Steak Set with Demi-Glace Sauce",
+    "dish.set6": "Japanese Hamburg Steak Set (100% Beef)",
+    "dish.ala1": "Wagyu Steak (Sirloin)",
+    "dish.ala2": "Hakone Seiroku Beef (Rump)",
+    "dish.ala3": "Hakone Seiroku Beef (Picanha)",
+    "dish.ala4": "Hakone Seiroku Beef (Top Blade)",
+    "dish.ala5": "Cheese-Filled Hamburg Steak with Demi-Glace Sauce",
+    "dish.ala6": "Japanese Hamburg Steak (100% Beef)",
+    "desc.sirloin": "A perfect balance of lean and fat, with a fine texture and rich flavor.",
+    "desc.rump": "Perfectly tender and full of meaty flavor — a lean cut from the rump.",
+    "desc.picanha": "Perfectly tender and located above the rump, with minimal marbling.",
+    "desc.topblade": "A cut from the shoulder blade, known for being tender and flavorful, with rich marbling and a good balance of lean and fat.",
+    "desc.cheese": "A tender, flavorful patty that melts in your mouth. This classic Japanese comfort dish is made with a pork and beef blend, filled with cheese and finished with demi-glace sauce.",
+    "desc.beef100": "A tender, flavorful patty made with 100% beef, served with your choice of sauce.",
+    "variant.demi": "With demi-glace sauce",
+    "variant.ponzu": "With grated radish & ponzu sauce",
+    "side.rice": "Rice",
+    "desc.rice": "Small, medium, or large",
+    "side.miso": "Miso Soup",
+    "desc.miso": "A warm, savory soup made with a traditional miso broth.",
+    "side.salad": "Salad",
+    "desc.salad": "Fresh cabbage, tomato, cucumber, and broccoli.",
+    "drinks.alcohol.label": "Beer, Sake & Highball",
+    "drinks.alcohol.title": "Alcoholic Drinks",
+    "drink.sake": "Japanese Sake (Hakoneyama)",
+    "drink.nonalc": "Non-Alcohol Beer",
+    "drink.highball": "Whiskey Highball (Pure / With Soda)",
+    "drink.kirin": "Kirin Ichiban Beer (500 ml)",
+    "drink.plum": "Plum Wine",
+    "drink.plum.rock": "On the Rocks",
+    "drink.plum.soda": "With Soda",
+    "wine.label": "By the Glass or Bottle",
+    "wine.title": "Wine",
+    "wine.red": "Red Wine",
+    "wine.white": "White Wine",
+    "wine.glass": "Glass",
+    "wine.bottle": "Bottle",
+    "wine.azusa": "Azusa (Dry)",
+    "wine.shinshu": "Shinshu Black Queen (Semi-Dry)",
+    "wine.akadama": "Akadama Sweet Red Wine",
+    "wine.sen": "Grande Polaire Esprit de Vin Japonais Sen",
+    "wine.koshu": "Koshu White Wine (Dry)",
+    "bev.label": "Each ¥300",
+    "bev.title": "Beverages",
+    "bev.coke": "Coke (Regular / Zero)",
+    "bev.ginger": "Ginger Ale",
+    "bev.orange": "100% Orange Juice",
+    "bev.oolong": "Oolong Tea (Hot / Iced)",
+    "bev.green": "Green Tea (Hot / Iced)",
+    "bev.hotcoffee": "Hot Coffee",
+    "bev.icedcoffee": "Iced Coffee",
+    "dessert.large": "Juna's Homemade Leche Flan (Large)",
+    "dessert.small": "Juna's Homemade Leche Flan (Small)",
     'location.title': 'Visit Us',
     'location.address': 'Japan, 〒250-0311 Kanagawa, Ashigarashimo District, Hakone, Yumoto, 694-5 2F',
     'location.open': 'We are Open',
@@ -179,89 +163,72 @@ const translations = {
     'value.5.title': '卓越性',
     'value.5.text': '私たちは常に学び、技術を高め、料理とレストランを毎日より良くする方法を探し続けます。',
     'menu.marker': 'MENU',
-    'menu.label': '日本とフィリピンの心温まる味',
     'menu.title': 'メニュー',
     'menu.intro': '心温まるセットメニューから、みんなで楽しめる一品料理やドリンクまで、特別なひとときを彩る味わいをお楽しみください。表示価格はすべて税込です。',
-    'menu.group.set': 'セットメニュー',
-    'menu.group.ala': '単品メニュー',
-    'menu.group.drinks': 'ドリンク',
-    'menu.panel.japaneseSets': '和定食',
-    'menu.panel.japaneseIncludes': 'ご飯・スープ・サラダ付き',
-    'menu.1.title': '国産牛ステーキセット（イチボ）',
-    'menu.1.text': 'ランプの上部にある部位で、サシが多く、やわらかいのが特徴です。',
-    'menu.2.title': '国産牛ステーキセット（ランプ）',
-    'menu.2.text': 'ランプ部位の赤身肉。やわらかく、肉の旨みがしっかり感じられます。',
-    'menu.3.title': '和風ハンバーグセット',
-    'menu.3.text': '口の中でほどける、やわらかく風味豊かなハンバーグ。特製ソースでお楽しみください。',
-    'menu.4.title': '国産豚バラ焼肉セット',
-    'menu.4.text': '脂の甘みと濃厚な旨味が特徴のジューシーな焼肉部位。',
-    'ala.label': '和の定番',
-    'ala.title': '和食アラカルト',
-    'ala.1.name': '国産牛ステーキ（イチボ）',
-    'ala.1.desc': 'ランプの上部にある部位で、サシが多く、やわらかいのが特徴です。',
-    'ala.2.name': '国産牛ステーキ（ランプ）',
-    'ala.2.desc': 'ランプ部位の赤身肉。やわらかく、肉の旨みがしっかり感じられます。',
-    'ala.3.name': '和風ハンバーグ',
-    'ala.3.desc': '口の中でほどける、やわらかく風味豊かなハンバーグ。特製ソースでお楽しみください。',
-    'ala.4.name': '国産豚バラ焼肉',
-    'ala.4.desc': '脂の甘みと濃厚な旨味が特徴のジューシーな焼肉部位。',
-    'ala.5.name': '味噌汁',
-    'ala.5.desc': '香り豊かな味噌だしで作る、ほっとする和のスープです。',
-    'ala.6.name': 'ご飯',
-    'ala.6.desc': 'ライス (小・中・大)',
-    'set.label': 'セットでご提供',
-    'set.title': 'フィリピン料理セット',
-    'set.includes': 'ご飯・スープ・サラダ付き',
-    'set.1.name': 'ポークアドボセット',
-    'set.1.desc': '豚肉を酢、醤油、にんにくなどで煮込んだ、フィリピンの代表的な家庭料理です。',
-    'set.2.name': 'フィリピン風唐揚げセット',
-    'set.2.desc': '皮がパリパリで身がジューシーな、クリスピーな食感が特徴。',
-    'set.3.name': 'ルンピアン・トゲセット',
-    'set.3.desc': 'もやしや野菜を薄い皮で巻いて揚げた、フィリピンの定番春巻きです。',
-    'winterSet.label': 'セットでご提供',
-    'winterSet.title': '冬季限定シリーズ',
-    'winterSet.includes': 'ご飯・スープ・サラダ付き',
-    'winterSet.1.name': '和風ビーフシチュー',
-    'winterSet.1.desc': 'やわらかい牛肉と野菜をじっくり煮込んだ、旨みたっぷりの和風シチューです。',
-    'winterSet.2.name': 'フィリピン風ビーフカルデレータ',
-    'winterSet.2.desc': '牛肉と野菜をトマトソースで煮込んだ、コクのあるフィリピンのシチュー料理です。',
-    'dish.label': 'フィリピンの定番',
-    'dish.title': 'フィリピン料理',
-    'dish.1.name': 'ポークアドボ',
-    'dish.1.desc': '豚肉を酢、醤油、にんにくなどで煮込んだ、フィリピンの代表的な家庭料理です。',
-    'dish.2.name': 'フィリピン風唐揚げ',
-    'dish.2.desc': '皮がパリパリで身がジューシーな、クリスピーな食感が特徴。',
-    'dish.3.name': 'ルンピアン・トゲ',
-    'dish.3.desc': 'もやしや野菜を薄い皮で巻いて揚げた、フィリピンの定番春巻きです。',
-    'winterDish.label': '冬季限定シリーズ',
-    'winterDish.title': '冬季限定シリーズ',
-    'winterDish.1.name': '和風ビーフシチュー',
-    'winterDish.1.desc': 'やわらかい牛肉と野菜をじっくり煮込んだ、旨みたっぷりの和風シチューです。',
-    'winterDish.2.name': 'フィリピン風ビーフカルデレータ',
-    'winterDish.2.desc': '牛肉と野菜をトマトソースで煮込んだ、コクのあるフィリピンのシチュー料理です。',
-    'drinks.label': 'ビール・日本酒・ワイン',
-    'drinks.title': 'アルコールドリンク',
-    'drink.1.name': 'キリンビール中瓶',
-    'drink.2.name': 'ノンアルコールビール',
-    'drink.3.name': 'ウィスキーハイボール',
-    'drink.4.name': '日本酒（グラス）',
-    'drink.5.name': '梅酒',
-    'drink.6.name': '赤ワイングラス',
-    'drink.7.name': '赤ワインボトル',
-    'drink.8.name': '白ワイングラス',
-    'drink.9.name': '白ワインボトル',
-    'soft.label': 'コーヒー・お茶・ジュース',
-    'soft.title': 'ソフトドリンク',
-    'soft.1.name': 'コーラ',
-    'soft.2.name': 'ジンジャーエール',
-    'soft.3.name': '100% オレンジジュース',
-    'soft.4.name': '烏龍茶',
-    'soft.5.name': '緑茶',
-    'soft.6.name': 'ホットコーヒー',
-    'soft.7.name': 'アイスコーヒー',
-    'dessert.title': 'デザート',
-    'dessert.1.name': 'ジュナの自家製レチェフラン（ホール）',
-    'dessert.2.name': 'ジュナの自家製レチェフラン（ハーフ）',
+    "menu.label": "ステーキと和の味わい",
+    "menu.group.set": "セットメニュー",
+    "menu.set.note": "ライス・スープ・サラダ付き",
+    "menu.group.ala": "単品メニュー",
+    "menu.group.sides": "サイドメニュー",
+    "menu.group.drinks": "ドリンク",
+    "menu.group.dessert": "デザート",
+    "dish.set1": "和牛ステーキセット (ロース)",
+    "dish.set2": "国産ステーキセット (ランプ)",
+    "dish.set3": "国産ステーキセット (イチボ)",
+    "dish.set4": "国産ステーキセット (ミスジ)",
+    "dish.set5": "チーズインデミグラスハンバーグセット",
+    "dish.set6": "国産ハンバーグセット (国産牛100%)",
+    "dish.ala1": "和牛ステーキ (ロース)",
+    "dish.ala2": "国産ステーキ (ランプ)",
+    "dish.ala3": "国産ステーキ (イチボ)",
+    "dish.ala4": "国産ステーキ (ミスジ)",
+    "dish.ala5": "チーズインデミグラスハンバーグ",
+    "dish.ala6": "国産ハンバーグ (国産牛100%)",
+    "desc.sirloin": "赤身と脂身のバランスが良く、きめ細かい肉質と濃厚な旨味が特徴です。",
+    "desc.rump": "脂肪が少なくあっさりしていながらも、噛むほどに肉本来の深い旨みを感じられます。",
+    "desc.picanha": "ランプの上に位置する部位。少しサシがあり柔らかい。",
+    "desc.topblade": "肩甲骨の部位のお肉で、適度な霜降りがあり、柔らかく風味豊かなことで知られています。",
+    "desc.cheese": "口の中でとろける、やわらかく風味豊かなハンバーグ。豚と牛の合挽き肉にチーズを包み、デミグラスソースで仕上げた定番の洋食です。",
+    "desc.beef100": "国産牛100%で作る、口の中でとろけるやわらかなハンバーグ。お好みのソースでお召し上がりください。",
+    "variant.demi": "デミグラスソース",
+    "variant.ponzu": "おろしポン酢",
+    "side.rice": "ご飯",
+    "desc.rice": "小・中・大",
+    "side.miso": "味噌汁",
+    "desc.miso": "香り豊かな味噌だしで作る、ほっとする和のスープです。",
+    "side.salad": "サラダ",
+    "desc.salad": "キャベツ、トマト、きゅうり、ブロッコリーの新鮮なサラダ。",
+    "drinks.alcohol.label": "ビール・日本酒・ハイボール",
+    "drinks.alcohol.title": "アルコールドリンク",
+    "drink.sake": "箱根山 (日本酒)",
+    "drink.nonalc": "ノンアルコールビール",
+    "drink.highball": "ウィスキーハイボール (ロック / ソーダ割り)",
+    "drink.kirin": "キリンビール一番搾り 中瓶",
+    "drink.plum": "梅酒",
+    "drink.plum.rock": "ロック",
+    "drink.plum.soda": "ソーダ割り",
+    "wine.label": "グラス・ボトル",
+    "wine.title": "ワイン",
+    "wine.red": "赤ワイン",
+    "wine.white": "白ワイン",
+    "wine.glass": "グラス",
+    "wine.bottle": "ボトル",
+    "wine.azusa": "あずさ 辛口",
+    "wine.shinshu": "信州ブラッククイーン やや辛口",
+    "wine.akadama": "赤玉スイートワイン (赤)",
+    "wine.sen": "エスプリ ド ヴァン ジャポネ 泉-SEN",
+    "wine.koshu": "甲州白ワイン 辛口",
+    "bev.label": "各 ¥300",
+    "bev.title": "ソフトドリンク",
+    "bev.coke": "コーラ (レギュラー / ゼロ)",
+    "bev.ginger": "ジンジャーエール",
+    "bev.orange": "オレンジジュース 100%",
+    "bev.oolong": "烏龍茶 (ホット / アイス)",
+    "bev.green": "緑茶 (ホット / アイス)",
+    "bev.hotcoffee": "ホットコーヒー",
+    "bev.icedcoffee": "アイスコーヒー",
+    "dessert.large": "ジュナの自家製プリン (大)",
+    "dessert.small": "ジュナの自家製プリン (小)",
     'location.title': 'アクセス',
     'location.address': '日本、〒250-0311 神奈川県足柄下郡箱根町湯本694-5 2F',
     'location.open': '営業時間',
@@ -314,89 +281,9 @@ const i18nTargets = [
   { selector: '#values .value-item:nth-child(5) .value-title', key: 'value.5.title' },
   { selector: '#values .value-item:nth-child(5) .value-text', key: 'value.5.text' },
   { selector: '#menu .vertical-section-mark', key: 'menu.marker' },
-  { selector: '#menu .section-heading .showcase-label', key: 'menu.label' },
   { selector: '#menu .section-heading .section-title', key: 'menu.title' },
   { selector: '#menu .menu-intro', key: 'menu.intro' },
-  { selector: '#menu-group-set-title', key: 'menu.group.set' },
-  { selector: '#menu-group-ala-title', key: 'menu.group.ala' },
-  { selector: '#menu-group-drinks-title', key: 'menu.group.drinks' },
-  { selector: '#menu .menu-board-panel--japanese .menu-board-panel-title', key: 'menu.panel.japaneseSets' },
-  { selector: '#menu .menu-board-panel--japanese .menu-board-panel-note', key: 'menu.panel.japaneseIncludes' },
-  { selector: '#menu .menu-item:nth-child(1) .menu-item-title', key: 'menu.1.title' },
-  { selector: '#menu .menu-item:nth-child(1) .menu-item-text', key: 'menu.1.text' },
-  { selector: '#menu .menu-item:nth-child(2) .menu-item-title', key: 'menu.2.title' },
-  { selector: '#menu .menu-item:nth-child(2) .menu-item-text', key: 'menu.2.text' },
-  { selector: '#menu .menu-item:nth-child(3) .menu-item-title', key: 'menu.3.title' },
-  { selector: '#menu .menu-item:nth-child(3) .menu-item-text', key: 'menu.3.text' },
-  { selector: '#menu .menu-item:nth-child(4) .menu-item-title', key: 'menu.4.title' },
-  { selector: '#menu .menu-item:nth-child(4) .menu-item-text', key: 'menu.4.text' },
-  { selector: '#menu .food-card--ala .drinks-menu-heading .showcase-label', key: 'ala.label' },
-  { selector: '#ala-carte-title', key: 'ala.title' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(1) .drinks-item-name', key: 'ala.1.name' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(1) .ala-carte-desc', key: 'ala.1.desc' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(2) .drinks-item-name', key: 'ala.2.name' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(2) .ala-carte-desc', key: 'ala.2.desc' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(3) .drinks-item-name', key: 'ala.3.name' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(3) .ala-carte-desc', key: 'ala.3.desc' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(4) .drinks-item-name', key: 'ala.4.name' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(4) .ala-carte-desc', key: 'ala.4.desc' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(5) .drinks-item-name', key: 'ala.5.name' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(5) .ala-carte-desc', key: 'ala.5.desc' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(6) .drinks-item-name', key: 'ala.6.name' },
-  { selector: '#menu .food-card--ala .ala-carte-item:nth-child(6) .ala-carte-desc', key: 'ala.6.desc' },
-  { selector: '#menu .food-card--set .drinks-menu-heading .showcase-label', key: 'set.label' },
-  { selector: '#menu .food-card--set .drinks-menu-heading .drinks-menu-title', key: 'set.title' },
-  { selector: '#menu .food-card--set .drinks-menu-heading .menu-board-panel-note', key: 'set.includes' },
-  { selector: '#menu .food-card--set .ala-carte-item:nth-child(1) .drinks-item-name', key: 'set.1.name' },
-  { selector: '#menu .food-card--set .ala-carte-item:nth-child(1) .ala-carte-desc', key: 'set.1.desc' },
-  { selector: '#menu .food-card--set .ala-carte-item:nth-child(2) .drinks-item-name', key: 'set.2.name' },
-  { selector: '#menu .food-card--set .ala-carte-item:nth-child(2) .ala-carte-desc', key: 'set.2.desc' },
-  { selector: '#menu .food-card--set .ala-carte-item:nth-child(3) .drinks-item-name', key: 'set.3.name' },
-  { selector: '#menu .food-card--set .ala-carte-item:nth-child(3) .ala-carte-desc', key: 'set.3.desc' },
-  { selector: '#menu .food-card--winter-set .drinks-menu-heading .showcase-label', key: 'winterSet.label' },
-  { selector: '#menu .food-card--winter-set .drinks-menu-heading .drinks-menu-title', key: 'winterSet.title' },
-  { selector: '#menu .food-card--winter-set .drinks-menu-heading .menu-board-panel-note', key: 'winterSet.includes' },
-  { selector: '#menu .food-card--winter-set .ala-carte-item:nth-child(1) .drinks-item-name', key: 'winterSet.1.name' },
-  { selector: '#menu .food-card--winter-set .ala-carte-item:nth-child(1) .ala-carte-desc', key: 'winterSet.1.desc' },
-  { selector: '#menu .food-card--winter-set .ala-carte-item:nth-child(2) .drinks-item-name', key: 'winterSet.2.name' },
-  { selector: '#menu .food-card--winter-set .ala-carte-item:nth-child(2) .ala-carte-desc', key: 'winterSet.2.desc' },
-  { selector: '#menu .food-card--dish .drinks-menu-heading .showcase-label', key: 'dish.label' },
-  { selector: '#menu .food-card--dish .drinks-menu-heading .drinks-menu-title', key: 'dish.title' },
-  { selector: '#menu .food-card--dish .ala-carte-item:nth-child(1) .drinks-item-name', key: 'dish.1.name' },
-  { selector: '#menu .food-card--dish .ala-carte-item:nth-child(1) .ala-carte-desc', key: 'dish.1.desc' },
-  { selector: '#menu .food-card--dish .ala-carte-item:nth-child(2) .drinks-item-name', key: 'dish.2.name' },
-  { selector: '#menu .food-card--dish .ala-carte-item:nth-child(2) .ala-carte-desc', key: 'dish.2.desc' },
-  { selector: '#menu .food-card--dish .ala-carte-item:nth-child(3) .drinks-item-name', key: 'dish.3.name' },
-  { selector: '#menu .food-card--dish .ala-carte-item:nth-child(3) .ala-carte-desc', key: 'dish.3.desc' },
-  { selector: '#menu .food-card--winter-dish .drinks-menu-heading .showcase-label', key: 'winterDish.label' },
-  { selector: '#menu .food-card--winter-dish .drinks-menu-heading .drinks-menu-title', key: 'winterDish.title' },
-  { selector: '#menu .food-card--winter-dish .ala-carte-item:nth-child(1) .drinks-item-name', key: 'winterDish.1.name' },
-  { selector: '#menu .food-card--winter-dish .ala-carte-item:nth-child(1) .ala-carte-desc', key: 'winterDish.1.desc' },
-  { selector: '#menu .food-card--winter-dish .ala-carte-item:nth-child(2) .drinks-item-name', key: 'winterDish.2.name' },
-  { selector: '#menu .food-card--winter-dish .ala-carte-item:nth-child(2) .ala-carte-desc', key: 'winterDish.2.desc' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-menu-heading .showcase-label', key: 'drinks.label' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] #drinks-menu-title', key: 'drinks.title' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(1) .drinks-item-name', key: 'drink.1.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(2) .drinks-item-name', key: 'drink.2.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(3) .drinks-item-name', key: 'drink.3.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(4) .drinks-item-name', key: 'drink.4.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(5) .drinks-item-name', key: 'drink.5.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(6) .drinks-item-name', key: 'drink.6.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(7) .drinks-item-name', key: 'drink.7.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(8) .drinks-item-name', key: 'drink.8.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="drinks-menu-title"] .drinks-item:nth-child(9) .drinks-item-name', key: 'drink.9.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .drinks-menu-heading .showcase-label', key: 'soft.label' },
-  { selector: '#softdrinks-menu-title', key: 'soft.title' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(1) .drinks-item-name', key: 'soft.1.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(2) .drinks-item-name', key: 'soft.2.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(3) .drinks-item-name', key: 'soft.3.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(4) .drinks-item-name', key: 'soft.4.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(5) .drinks-item-name', key: 'soft.5.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(6) .drinks-item-name', key: 'soft.6.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .softdrinks-list .drinks-item:nth-child(7) .drinks-item-name', key: 'soft.7.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .ala-carte-subheading .drinks-menu-title', key: 'dessert.title' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .dessert-list .drinks-item:nth-child(1) .drinks-item-name', key: 'dessert.1.name' },
-  { selector: '#menu .drinks-menu--separate[aria-labelledby="softdrinks-menu-title"] .dessert-list .drinks-item:nth-child(2) .drinks-item-name', key: 'dessert.2.name' },
+  { selector: '#menu .section-heading .showcase-label', key: 'menu.label' },
   { selector: '#location .location-title', key: 'location.title' },
   { selector: '#location .location-address p:nth-child(2)', key: 'location.address' },
   { selector: '#location .visit-schedule-title', key: 'location.open' },
@@ -448,10 +335,60 @@ function applyLanguage(language) {
     }
   });
 
+  // Menu text is marked up with data-i18n; data-i18n-alt shows the other language underneath
+  const altDictionary = language === 'ja' ? translations.en : translations.ja;
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const text = dictionary[element.dataset.i18n];
+    if (typeof text === 'string') {
+      element.textContent = text;
+    }
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+    const text = altDictionary[element.dataset.i18nAlt];
+    if (typeof text === 'string') {
+      element.textContent = text;
+    }
+  });
+
   updateLanguageToggle(language);
+  splitHeadline(language);
 
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
   applyTheme(currentTheme);
+}
+
+// Wrap each word (each character in Japanese) so the headline can rise in word by word
+function splitHeadline(language) {
+  const headline = document.querySelector('.hero-headline');
+  if (!headline) {
+    return;
+  }
+
+  const text = headline.textContent.trim();
+  const isJapanese = language === 'ja';
+  const parts = isJapanese ? Array.from(text) : text.split(/\s+/);
+  const step = isJapanese ? 35 : 60;
+
+  headline.setAttribute('aria-label', text);
+  headline.textContent = '';
+
+  parts.forEach((part, index) => {
+    const word = document.createElement('span');
+    word.className = 'word';
+    word.setAttribute('aria-hidden', 'true');
+
+    const inner = document.createElement('span');
+    inner.className = 'word-inner';
+    inner.textContent = part;
+    inner.style.setProperty('--d', `${index * step}ms`);
+
+    word.appendChild(inner);
+    headline.appendChild(word);
+
+    if (!isJapanese && index < parts.length - 1) {
+      headline.appendChild(document.createTextNode(' '));
+    }
+  });
 }
 
 function getPreferredTheme() {
@@ -492,6 +429,8 @@ if (languageToggle) {
   languageToggle.addEventListener('click', () => {
     const currentLanguage = getCurrentLanguage();
     const nextLanguage = currentLanguage === 'ja' ? 'en' : 'ja';
+    // replay the headline animation right away instead of waiting for the intro
+    document.querySelector('.hero-headline')?.style.setProperty('--word-base', '0s');
     applyLanguage(nextLanguage);
     localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLanguage);
   });
@@ -523,46 +462,73 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 const scrollToggle = document.querySelector('.scroll-toggle');
-
-// Add scroll animation to navbar
-let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
+const scrollProgress = document.querySelector('.scroll-progress');
+
+// Remember the last applied state so the DOM is only touched when something changes
+let isNavScrolled = null;
+let isScrollUp = null;
+let maxScroll = 0;
+let scrollFrame = null;
+
+function measureScroll() {
+  maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+}
 
 function updateScrollToggle(currentScroll = window.pageYOffset) {
   if (!scrollToggle) {
     return;
   }
 
-  scrollToggle.classList.add('is-visible');
-
-  if (currentScroll <= 80) {
-    scrollToggle.setAttribute('aria-label', 'Scroll to bottom');
-    scrollToggle.setAttribute('title', 'Scroll to bottom');
-    scrollToggle.querySelector('.scroll-toggle-icon').textContent = '↓';
+  // the arrow stays ↓ and is rotated by CSS so the flip animates
+  const isUp = currentScroll > 80;
+  if (isUp === isScrollUp) {
     return;
   }
 
-  scrollToggle.setAttribute('aria-label', 'Scroll to top');
-  scrollToggle.setAttribute('title', 'Scroll to top');
-  scrollToggle.querySelector('.scroll-toggle-icon').textContent = '↑';
+  isScrollUp = isUp;
+  const label = isUp ? 'Scroll to top' : 'Scroll to bottom';
+  scrollToggle.classList.add('is-visible');
+  scrollToggle.classList.toggle('is-up', isUp);
+  scrollToggle.setAttribute('aria-label', label);
+  scrollToggle.setAttribute('title', label);
 }
 
-window.addEventListener('scroll', () => {
+// Runs at most once per frame; only writes a compositor-friendly transform every frame
+function updateScrollEffects() {
+  scrollFrame = null;
   const currentScroll = window.pageYOffset;
-  
-  if (currentScroll > 100) {
-    const themedShadow = getComputedStyle(document.documentElement).getPropertyValue('--shadow-nav').trim();
-    navbar.style.boxShadow = `0 2px 20px ${themedShadow || 'rgba(0, 0, 0, 0.1)'}`;
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.style.boxShadow = 'none';
-    navbar.classList.remove('scrolled');
+
+  if (scrollProgress) {
+    const progress = maxScroll > 0 ? Math.min(currentScroll / maxScroll, 1) : 0;
+    scrollProgress.style.transform = `scaleX(${progress.toFixed(4)})`;
+  }
+
+  const scrolled = currentScroll > 100;
+  if (scrolled !== isNavScrolled) {
+    isNavScrolled = scrolled;
+    navbar.classList.toggle('scrolled', scrolled);
   }
 
   updateScrollToggle(currentScroll);
-  
-  lastScroll = currentScroll;
-});
+}
+
+function requestScrollUpdate() {
+  if (!scrollFrame) {
+    scrollFrame = requestAnimationFrame(updateScrollEffects);
+  }
+}
+
+measureScroll();
+updateScrollEffects();
+
+window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+window.addEventListener('resize', () => {
+  measureScroll();
+  requestScrollUpdate();
+}, { passive: true });
+// page height changes as lazy images and fonts load
+window.addEventListener('load', measureScroll);
 
 if (scrollToggle) {
   scrollToggle.addEventListener('click', () => {
@@ -574,41 +540,101 @@ if (scrollToggle) {
       behavior: 'smooth'
     });
   });
-
-  updateScrollToggle();
 }
 
-// Intersection Observer for fade-in animations
+// Dishes with two sauce options: the 6.1 / 6.2 buttons (or tapping the photo) swap the picture
+function showDishVariant(card, variant) {
+  card.querySelectorAll('.dish-media--pair img').forEach(img => {
+    const isActive = img.dataset.variant === variant;
+    img.classList.toggle('is-active', isActive);
+    img.setAttribute('aria-hidden', String(!isActive));
+  });
+  card.querySelectorAll('.dish-variant').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.variant === variant));
+  });
+}
+
+function toggleDishVariant(media) {
+  const active = media.querySelector('img.is-active');
+  showDishVariant(media.closest('.dish-card'), active && active.dataset.variant === '1' ? '2' : '1');
+}
+
+document.querySelectorAll('.dish-variant').forEach(button => {
+  button.addEventListener('click', () => showDishVariant(button.closest('.dish-card'), button.dataset.variant));
+});
+
+document.querySelectorAll('.dish-media--pair').forEach(media => {
+  media.addEventListener('click', () => toggleDishVariant(media));
+  media.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleDishVariant(media);
+    }
+  });
+});
+
+// Highlight the nav link for the section in the middle of the screen
+const navLinks = document.querySelectorAll('.nav-left .nav-item');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+
+document.querySelectorAll('main > section[id]').forEach(section => sectionObserver.observe(section));
+
+// Scroll-triggered reveals (styles live in the Motion section of style.css)
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const observerOptions = {
-  threshold: 0.12,
-  rootMargin: '0px 0px -80px 0px'
-};
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
-
-// Observe sections for animation with slight stagger
-const revealTargets = document.querySelectorAll('.story-container, .story-image-large, .story-image-small, .vision-container, .vision-panel, .value-item, .menu-container, .menu-group-heading, .menu-board-panel, .menu-item, .drinks-item, .location-container, .location-address, .location-map, .showcase-header');
-revealTargets.forEach((el, index) => {
-  if (prefersReducedMotion) {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    return;
-  }
-
-  const delay = Math.min(index * 70, 280);
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(34px) scale(0.985)';
-  el.style.transition = `opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`;
-  observer.observe(el);
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -80px 0px'
 });
+
+// [selector, variant class, base delay ms, stagger between siblings ms]
+const revealGroups = [
+  ['.section-heading, .showcase-header, .menu-intro, .location-title, .menu-group-heading, .menu-group-note, .footer-content', '', 0, 0],
+  ['.story-left, .vision-panel:nth-child(1), .location-address', 'reveal--left', 0, 0],
+  ['.vision-panel:nth-child(2), .location-map', 'reveal--right', 120, 0],
+  ['.story-image-large, .story-image-small', 'reveal--wipe', 0, 140],
+  ['.value-item', 'reveal--zoom', 0, 90],
+  ['.dish-card, .side-card, .menu-board-panel', 'reveal--zoom', 0, 90],
+  ['.drinks-item', 'reveal--soft', 200, 50]
+];
+
+revealGroups.forEach(([selector, variant, base, step]) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.classList.add('reveal');
+    if (variant) {
+      el.classList.add(variant);
+    }
+
+    if (prefersReducedMotion) {
+      el.classList.add('is-visible');
+      return;
+    }
+
+    const siblingIndex = Array.prototype.indexOf.call(el.parentElement.children, el);
+    el.style.setProperty('--reveal-delay', `${base + Math.min(siblingIndex * step, 500)}ms`);
+    observer.observe(el);
+  });
+});
+
+try {
+  sessionStorage.setItem('ryu-intro-seen', '1');
+} catch (e) {
+  // storage unavailable — the intro simply plays again next time
+}
 
 console.log('Ryu Hakone Restaurant - Website loaded successfully');

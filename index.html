@@ -12,13 +12,27 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="icon" type="image/png" href="Logo/Logo_Final.png" />
+		<link rel="icon" type="image/png" href="Logo/web/favicon.png" />
 		<link rel="stylesheet" href="style.css" />
+		<script>
+			// Play the shoji-door intro once per browser session
+			try {
+				if (sessionStorage.getItem('ryu-intro-seen')) document.documentElement.classList.add('no-intro');
+			} catch (e) {
+				document.documentElement.classList.add('no-intro');
+			}
+		</script>
 	</head>
 	<body>
+		<div class="shoji-intro" aria-hidden="true">
+			<span class="shoji-panel shoji-panel--left"></span>
+			<span class="shoji-panel shoji-panel--right"></span>
+			<span class="shoji-mark">RYU</span>
+		</div>
+
 		<!-- Minimal Navigation -->
 		<header class="navbar">
 			<div class="nav-left">
@@ -40,24 +54,22 @@
 					<span class="theme-toggle-label">Dark</span>
 				</button>
 			</div>
+			<div class="scroll-progress" aria-hidden="true"></div>
 		</header>
 
 		<main>
 			<!-- Hero Section with Large Centerpiece -->
 			<section class="hero-section" id="top">
-				<div class="hero-bg-text">RYU</div>
 				<div class="hero-content">
-					<div class="hero-copy">
-						<p class="hero-brand-title">Ryu Hakone Restaurant</p>
-						<h1 class="hero-headline">The Best Restaurant Experience in the Heart of Hakone</h1>
-						<a href="#location" class="cta-button">
-							<span class="cta-button-text">Visit Us</span>
-							<span class="arrow">→</span>
-						</a>
+					<div class="hero-logo">
+						<img src="Logo/web/logo.webp" width="640" height="640" fetchpriority="high" alt="RYU 箱根レストラン — Ryu Hakone Restaurant" class="hero-mark" />
 					</div>
-					<div class="hero-logo-card">
-						<img src="Logo/Logo_Final.png" alt="Ryu Hakone Restaurant logo" class="hero-mark" />
-					</div>
+					<span class="hero-divider" aria-hidden="true"></span>
+					<h1 class="hero-headline">The Best Restaurant Experience in the Heart of Hakone</h1>
+					<a href="#location" class="cta-button">
+						<span class="cta-button-text">Visit Us</span>
+						<span class="arrow">→</span>
+					</a>
 				</div>
 			</section>
 
@@ -85,16 +97,16 @@ Come and share a delicious meal with us!
 					<div class="story-right">
 						<div class="story-image-grid">
 							<div class="story-image-large">
-								<img src="Location/bldg.png" alt="Ryu Hakone building exterior" class="story-photo" />
+								<img src="Location/web/bldg.webp" width="1100" height="880" loading="lazy" decoding="async" alt="Ryu Hakone building exterior" class="story-photo" />
 							</div>
 							<div class="story-image-small">
-								<img src="Location/dining.png" alt="Ryu Hakone dining room" class="story-photo" />
+								<img src="Location/web/dining2.webp" width="600" height="800" loading="lazy" decoding="async" alt="Ryu Hakone dining room" class="story-photo" />
 							</div>
 							<div class="story-image-small">
-								<img src="Location/ANDY.png" alt="Andy Ryu B. Abiko" class="story-photo" />
+								<img src="Location/web/andy.webp" width="600" height="843" loading="lazy" decoding="async" alt="Andy Ryu B. Abiko" class="story-photo" />
 							</div>
 							<div class="story-image-small">
-								<img src="Food/FOOD.png" alt="Ryu Hakone Menu" class="story-photo" />
+								<img src="Food/web/food.webp" width="600" height="450" loading="lazy" decoding="async" alt="Ryu Hakone Menu" class="story-photo" />
 							</div>
 						</div>
 					</div>
@@ -172,7 +184,7 @@ Come and share a delicious meal with us!
 				<div class="menu-container">
 					<div class="vertical-section-mark" aria-hidden="true">MENU</div>
 					<div class="section-heading">
-						<span class="showcase-label">Japanese and Filipino Comfort</span>
+						<span class="showcase-label">Steak &amp; Japanese Comfort</span>
 						<h2 class="section-title">WHAT'S ON THE MENU?</h2>
 					</div>
 					<p class="menu-intro">
@@ -182,355 +194,397 @@ Come and share a delicious meal with us!
 					<div class="menu-extras">
 						<section class="menu-board" aria-labelledby="menu-group-set-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 class="drinks-menu-title" id="menu-group-set-title">Set Meals</h3>
+								<h3 id="menu-group-set-title" class="drinks-menu-title" data-i18n="menu.group.set">Set Menu</h3>
 							</div>
-							<div class="menu-board-grid">
-								<div class="menu-board-panel menu-board-panel--japanese">
-									<div class="drinks-menu-heading">
-										<span class="showcase-label">Served as Set Meals</span>
-										<h4 class="drinks-menu-title menu-board-panel-title">Japanese set meals</h4>
-										<p class="menu-board-panel-note">with rice, soup, and salad</p>
+							<p class="menu-group-note" data-i18n="menu.set.note">Served with rice, soup, and salad</p>
+							<div class="dish-grid">
+								<article class="dish-card">
+									<div class="dish-media dish-media--tray">
+										<img src="Food/web/menu/set-1.webp" width="720" height="532" loading="lazy" decoding="async" alt="Wagyu Steak Set (Sirloin)" />
 									</div>
-									<div class="menu-list">
-										<article class="menu-item">
-											<div class="menu-item-head">
-												<h3 class="menu-item-title">Japanese Beef Steak Set (Picanha)</h3>
-												<p class="menu-item-price">¥3,500</p>
-											</div>
-											<p class="menu-item-text">A perfectly tender cut from the upper rump, known for generous marbling and rich flavor.</p>
-										</article>
-										<article class="menu-item">
-											<div class="menu-item-head">
-												<h3 class="menu-item-title">Japanese Beef Steak Set (Rump)</h3>
-												<p class="menu-item-price">¥3,500</p>
-											</div>
-											<p class="menu-item-text">A lean rump cut that is tender and full of deep beef flavor.</p>
-										</article>
-										<article class="menu-item">
-											<div class="menu-item-head">
-												<h3 class="menu-item-title">Japanese Hamburg Set</h3>
-												<p class="menu-item-price">¥2,000</p>
-											</div>
-											<p class="menu-item-text">A tender and flavorful patty that melts in your mouth. A classic Japanese comfort dish served with our savory signature sauce.</p>
-										</article>
-										<article class="menu-item">
-											<div class="menu-item-head">
-												<h3 class="menu-item-title">Japanese Pork Belly Yakiniku Set</h3>
-												<p class="menu-item-price">¥1,500</p>
-											</div>
-											<p class="menu-item-text">A juicy cut of grilled meat characterized by the sweetness of its fat and rich meaty flavor.</p>
-										</article>
+									<div class="dish-body">
+										<span class="dish-no">01</span>
+										<h4 class="dish-name" data-i18n="dish.set1">Wagyu Steak Set (Sirloin)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.set1">和牛ステーキセット (ロース)</p>
+										<p class="dish-desc" data-i18n="desc.sirloin">A perfect balance of lean and fat, with a fine texture and rich flavor.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>150g</dt><dd>¥6,500</dd></div>
+											<div class="dish-price"><dt>300g</dt><dd>¥12,500</dd></div>
+										</dl>
 									</div>
-								</div>
-
-								<div class="menu-board-panel ala-carte-menu food-card food-card--set">
-									<div class="drinks-menu-heading">
-										<span class="showcase-label">Served as Set Meals</span>
-										<h4 class="drinks-menu-title menu-board-panel-title">Filipino set meals</h4>
-										<p class="menu-board-panel-note">with rice, soup, and salad</p>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--tray">
+										<img src="Food/web/menu/set-2.webp" width="720" height="532" loading="lazy" decoding="async" alt="Hakone Seiroku Beef Set (Rump)" />
 									</div>
-									<div class="drinks-list ala-carte-list">
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Pork Adobo Set</p>
-												<p class="ala-carte-desc">A typical Filipino home-style dish of pork simmered in vinegar, soy sauce, garlic, and other spices.</p>
-											</div>
-											<p class="drinks-item-price">¥1,800</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Filipino-style Fried Chicken Set</p>
-												<p class="ala-carte-desc">It features a crispy texture with a crispy skin and juicy flesh.</p>
-											</div>
-											<p class="drinks-item-price">¥1,500</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Lumpiang Togue Set</p>
-												<p class="ala-carte-desc">A Filipino spring roll filled with bean sprouts and vegetables, wrapped in a thin pastry and deep-fried until crisp.</p>
-											</div>
-											<p class="drinks-item-price">¥1,300</p>
-										</div>
+									<div class="dish-body">
+										<span class="dish-no">02</span>
+										<h4 class="dish-name" data-i18n="dish.set2">Hakone Seiroku Beef Set (Rump)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.set2">国産ステーキセット (ランプ)</p>
+										<p class="dish-desc" data-i18n="desc.rump">Perfectly tender and full of meaty flavor — a lean cut from the rump.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>100g</dt><dd>¥3,300</dd></div>
+											<div class="dish-price"><dt>150g</dt><dd>¥3,800</dd></div>
+										</dl>
 									</div>
-								</div>
-
-								<div class="menu-board-panel ala-carte-menu food-card food-card--winter-set">
-									<div class="drinks-menu-heading">
-										<span class="showcase-label">Served as Set Meals</span>
-										<h4 class="drinks-menu-title menu-board-panel-title">Winter Series</h4>
-										<p class="menu-board-panel-note">with rice, soup, and salad</p>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--tray">
+										<img src="Food/web/menu/set-3.webp" width="720" height="538" loading="lazy" decoding="async" alt="Hakone Seiroku Beef Set (Picanha)" />
 									</div>
-									<div class="drinks-list ala-carte-list">
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Japanese Beef Stew</p>
-												<p class="ala-carte-desc">A Japanese stew featuring tender beef and vegetables, simmered until soft and full of flavor.</p>
-											</div>
-											<p class="drinks-item-price">¥1,500</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Filipino Beef Caldereta</p>
-												<p class="ala-carte-desc">A rich Filipino stew dish made with beef and vegetables simmered in tomato sauce.</p>
-											</div>
-											<p class="drinks-item-price">¥1,500</p>
-										</div>
+									<div class="dish-body">
+										<span class="dish-no">03</span>
+										<h4 class="dish-name" data-i18n="dish.set3">Hakone Seiroku Beef Set (Picanha)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.set3">国産ステーキセット (イチボ)</p>
+										<p class="dish-desc" data-i18n="desc.picanha">Perfectly tender and located above the rump, with minimal marbling.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>100g</dt><dd>¥3,300</dd></div>
+											<div class="dish-price"><dt>150g</dt><dd>¥3,800</dd></div>
+										</dl>
 									</div>
-								</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--tray">
+										<img src="Food/web/menu/set-4.webp" width="720" height="528" loading="lazy" decoding="async" alt="Hakone Seiroku Beef Set (Top Blade)" />
+									</div>
+									<div class="dish-body">
+										<span class="dish-no">04</span>
+										<h4 class="dish-name" data-i18n="dish.set4">Hakone Seiroku Beef Set (Top Blade)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.set4">国産ステーキセット (ミスジ)</p>
+										<p class="dish-desc" data-i18n="desc.topblade">A cut from the shoulder blade, known for being tender and flavorful, with rich marbling and a good balance of lean and fat.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>100g</dt><dd>¥3,300</dd></div>
+											<div class="dish-price"><dt>150g</dt><dd>¥3,800</dd></div>
+										</dl>
+									</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--tray">
+										<img src="Food/web/menu/set-5.webp" width="720" height="519" loading="lazy" decoding="async" alt="Cheese-Filled Hamburg Steak Set with Demi-Glace Sauce" />
+									</div>
+									<div class="dish-body">
+										<span class="dish-no">05</span>
+										<h4 class="dish-name" data-i18n="dish.set5">Cheese-Filled Hamburg Steak Set with Demi-Glace Sauce</h4>
+										<p class="dish-alt" data-i18n-alt="dish.set5">チーズインデミグラスハンバーグセット</p>
+										<p class="dish-desc" data-i18n="desc.cheese">A tender, flavorful patty that melts in your mouth. This classic Japanese comfort dish is made with a pork and beef blend, filled with cheese and finished with demi-glace sauce.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dd>¥2,500</dd></div>
+										</dl>
+									</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--tray dish-media--pair" role="button" tabindex="0" aria-label="Show the other sauce">
+										<img class="is-active" data-variant="1" src="Food/web/menu/set-6-1.webp" width="720" height="516" loading="lazy" decoding="async" alt="Japanese Hamburg Steak Set (100% Beef) — with demi-glace sauce" />
+										<img data-variant="2" aria-hidden="true" src="Food/web/menu/set-6-2.webp" width="720" height="517" loading="lazy" decoding="async" alt="Japanese Hamburg Steak Set (100% Beef) — with grated radish &amp; ponzu sauce" />
+									</div>
+									<div class="dish-body">
+										<span class="dish-no">06</span>
+										<h4 class="dish-name" data-i18n="dish.set6">Japanese Hamburg Steak Set (100% Beef)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.set6">国産ハンバーグセット (国産牛100%)</p>
+										<p class="dish-desc" data-i18n="desc.beef100">A tender, flavorful patty made with 100% beef, served with your choice of sauce.</p>
+										<ul class="dish-variants">
+											<li><button type="button" class="dish-variant" data-variant="1" aria-pressed="true"><span class="dish-variant-no">6.1</span><span data-i18n="variant.demi">With demi-glace sauce</span></button></li>
+											<li><button type="button" class="dish-variant" data-variant="2" aria-pressed="false"><span class="dish-variant-no">6.2</span><span data-i18n="variant.ponzu">With grated radish &amp; ponzu sauce</span></button></li>
+										</ul>
+										<dl class="dish-prices">
+											<div class="dish-price"><dd>¥2,200</dd></div>
+										</dl>
+									</div>
+								</article>
 							</div>
 						</section>
 
 						<section class="menu-board" aria-labelledby="menu-group-ala-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 class="drinks-menu-title" id="menu-group-ala-title">Ala Carte</h3>
+								<h3 id="menu-group-ala-title" class="drinks-menu-title" data-i18n="menu.group.ala">Ala Carte</h3>
 							</div>
-							<div class="menu-board-grid">
-								<div class="menu-board-panel ala-carte-menu food-card food-card--ala" aria-labelledby="ala-carte-title">
-									<div class="drinks-menu-heading">
-										<span class="showcase-label">Japanese Favorites</span>
-										<h4 class="drinks-menu-title menu-board-panel-title" id="ala-carte-title">Japanese Ala Carte</h4>
+							<div class="dish-grid">
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/ala-1.webp" width="520" height="520" loading="lazy" decoding="async" alt="Wagyu Steak (Sirloin)" />
 									</div>
-									<div class="drinks-list ala-carte-list">
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Japanese Beef Steak (Picanha)</p>
-												<p class="ala-carte-desc">A perfectly tender cut from the upper rump, known for generous marbling and rich flavor.</p>
-											</div>
-											<p class="drinks-item-price">¥3,000</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Japanese Beef Steak (Rump)</p>
-												<p class="ala-carte-desc">A lean rump cut that is tender and full of deep beef flavor.</p>
-											</div>
-											<p class="drinks-item-price">¥3,000</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Japanese Hamburg</p>
-												<p class="ala-carte-desc">A tender and flavorful patty that melts in your mouth. A classic Japanese comfort dish served with our savory signature sauce.</p>
-											</div>
-											<p class="drinks-item-price">¥1,500</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Japanese Pork Belly Yakiniku</p>
-												<p class="ala-carte-desc">A juicy cut of grilled meat characterized by the sweetness of its fat and rich meaty flavor.</p>
-											</div>
-											<p class="drinks-item-price">¥1,000</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Miso Soup</p>
-												<p class="ala-carte-desc">A warm, savory, and comforting Japanese soup made with a traditional miso broth.</p>
-											</div>
-											<p class="drinks-item-price">¥250</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Rice</p>
-												<p class="ala-carte-desc">Rice (Small, Medium, Large)</p>
-											</div>
-											<div class="ala-carte-price-stack">
-												<p class="drinks-item-price">¥200 (S)</p>
-												<p class="drinks-item-price">¥300 (M)</p>
-												<p class="drinks-item-price">¥400 (L)</p>
-											</div>
-										</div>
+									<div class="dish-body">
+										<span class="dish-no">01</span>
+										<h4 class="dish-name" data-i18n="dish.ala1">Wagyu Steak (Sirloin)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.ala1">和牛ステーキ (ロース)</p>
+										<p class="dish-desc" data-i18n="desc.sirloin">A perfect balance of lean and fat, with a fine texture and rich flavor.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>150g</dt><dd>¥6,200</dd></div>
+											<div class="dish-price"><dt>300g</dt><dd>¥12,200</dd></div>
+										</dl>
 									</div>
-								</div>
-
-								<div class="menu-board-panel ala-carte-menu food-card food-card--dish">
-									<div class="drinks-menu-heading">
-										<span class="showcase-label">Filipino Classics</span>
-										<h4 class="drinks-menu-title menu-board-panel-title">Filipino Dish</h4>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/ala-2.webp" width="520" height="520" loading="lazy" decoding="async" alt="Hakone Seiroku Beef (Rump)" />
 									</div>
-									<div class="drinks-list ala-carte-list">
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Pork Adobo</p>
-												<p class="ala-carte-desc">A typical Filipino home-style dish of pork simmered in vinegar, soy sauce, garlic, and other spices.</p>
-											</div>
-											<p class="drinks-item-price">¥1,300</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Filipino-style Fried Chicken</p>
-												<p class="ala-carte-desc">It features a crispy texture with a crispy skin and juicy flesh.</p>
-											</div>
-											<p class="drinks-item-price">¥1,000</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Lumpiang Togue</p>
-												<p class="ala-carte-desc">A Filipino spring roll filled with bean sprouts and vegetables, wrapped in a thin pastry and deep-fried until crisp.</p>
-											</div>
-											<p class="drinks-item-price">¥800</p>
-										</div>
+									<div class="dish-body">
+										<span class="dish-no">02</span>
+										<h4 class="dish-name" data-i18n="dish.ala2">Hakone Seiroku Beef (Rump)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.ala2">国産ステーキ (ランプ)</p>
+										<p class="dish-desc" data-i18n="desc.rump">Perfectly tender and full of meaty flavor — a lean cut from the rump.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>100g</dt><dd>¥3,000</dd></div>
+											<div class="dish-price"><dt>150g</dt><dd>¥3,500</dd></div>
+										</dl>
 									</div>
-								</div>
-
-								<div class="menu-board-panel ala-carte-menu food-card food-card--winter-dish">
-									<div class="drinks-menu-heading">
-										<span class="showcase-label">Winter Series</span>
-										<h4 class="drinks-menu-title menu-board-panel-title">Winter Series</h4>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/ala-3.webp" width="520" height="520" loading="lazy" decoding="async" alt="Hakone Seiroku Beef (Picanha)" />
 									</div>
-									<div class="drinks-list ala-carte-list">
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Japanese Beef Stew</p>
-												<p class="ala-carte-desc">A Japanese stew featuring tender beef and vegetables, simmered until soft and full of flavor.</p>
-											</div>
-											<p class="drinks-item-price">¥1,000</p>
-										</div>
-										<div class="drinks-item ala-carte-item">
-											<div>
-												<p class="drinks-item-name">Filipino Beef Caldereta</p>
-												<p class="ala-carte-desc">A rich Filipino stew dish made with beef and vegetables simmered in tomato sauce.</p>
-											</div>
-											<p class="drinks-item-price">¥1,000</p>
-										</div>
+									<div class="dish-body">
+										<span class="dish-no">03</span>
+										<h4 class="dish-name" data-i18n="dish.ala3">Hakone Seiroku Beef (Picanha)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.ala3">国産ステーキ (イチボ)</p>
+										<p class="dish-desc" data-i18n="desc.picanha">Perfectly tender and located above the rump, with minimal marbling.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>100g</dt><dd>¥3,000</dd></div>
+											<div class="dish-price"><dt>150g</dt><dd>¥3,500</dd></div>
+										</dl>
 									</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/ala-4.webp" width="520" height="520" loading="lazy" decoding="async" alt="Hakone Seiroku Beef (Top Blade)" />
+									</div>
+									<div class="dish-body">
+										<span class="dish-no">04</span>
+										<h4 class="dish-name" data-i18n="dish.ala4">Hakone Seiroku Beef (Top Blade)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.ala4">国産ステーキ (ミスジ)</p>
+										<p class="dish-desc" data-i18n="desc.topblade">A cut from the shoulder blade, known for being tender and flavorful, with rich marbling and a good balance of lean and fat.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dt>100g</dt><dd>¥3,000</dd></div>
+											<div class="dish-price"><dt>150g</dt><dd>¥3,500</dd></div>
+										</dl>
+									</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/ala-5.webp" width="520" height="520" loading="lazy" decoding="async" alt="Cheese-Filled Hamburg Steak with Demi-Glace Sauce" />
+									</div>
+									<div class="dish-body">
+										<span class="dish-no">05</span>
+										<h4 class="dish-name" data-i18n="dish.ala5">Cheese-Filled Hamburg Steak with Demi-Glace Sauce</h4>
+										<p class="dish-alt" data-i18n-alt="dish.ala5">チーズインデミグラスハンバーグ</p>
+										<p class="dish-desc" data-i18n="desc.cheese">A tender, flavorful patty that melts in your mouth. This classic Japanese comfort dish is made with a pork and beef blend, filled with cheese and finished with demi-glace sauce.</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dd>¥2,200</dd></div>
+										</dl>
+									</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--round dish-media--pair" role="button" tabindex="0" aria-label="Show the other sauce">
+										<img class="is-active" data-variant="1" src="Food/web/menu/ala-6-1.webp" width="520" height="520" loading="lazy" decoding="async" alt="Japanese Hamburg Steak (100% Beef) — with demi-glace sauce" />
+										<img data-variant="2" aria-hidden="true" src="Food/web/menu/ala-6-2.webp" width="520" height="520" loading="lazy" decoding="async" alt="Japanese Hamburg Steak (100% Beef) — with grated radish &amp; ponzu sauce" />
+									</div>
+									<div class="dish-body">
+										<span class="dish-no">06</span>
+										<h4 class="dish-name" data-i18n="dish.ala6">Japanese Hamburg Steak (100% Beef)</h4>
+										<p class="dish-alt" data-i18n-alt="dish.ala6">国産ハンバーグ (国産牛100%)</p>
+										<p class="dish-desc" data-i18n="desc.beef100">A tender, flavorful patty made with 100% beef, served with your choice of sauce.</p>
+										<ul class="dish-variants">
+											<li><button type="button" class="dish-variant" data-variant="1" aria-pressed="true"><span class="dish-variant-no">6.1</span><span data-i18n="variant.demi">With demi-glace sauce</span></button></li>
+											<li><button type="button" class="dish-variant" data-variant="2" aria-pressed="false"><span class="dish-variant-no">6.2</span><span data-i18n="variant.ponzu">With grated radish &amp; ponzu sauce</span></button></li>
+										</ul>
+										<dl class="dish-prices">
+											<div class="dish-price"><dd>¥1,900</dd></div>
+										</dl>
+									</div>
+								</article>
+							</div>
+							<div class="sides-board">
+								<h4 class="sides-title" data-i18n="menu.group.sides">Sides</h4>
+								<div class="sides-grid">
+									<article class="side-card">
+										<img src="Food/web/menu/side-rice.webp" width="320" height="320" loading="lazy" decoding="async" alt="Rice" />
+										<div class="side-body">
+											<h5 class="dish-name" data-i18n="side.rice">Rice</h5>
+											<p class="dish-alt" data-i18n-alt="side.rice">ご飯</p>
+											<p class="dish-desc" data-i18n="desc.rice">Small, medium, or large</p>
+											<dl class="dish-prices">
+												<div class="dish-price"><dt>S</dt><dd>¥200</dd></div>
+												<div class="dish-price"><dt>M</dt><dd>¥300</dd></div>
+												<div class="dish-price"><dt>L</dt><dd>¥400</dd></div>
+											</dl>
+										</div>
+									</article>
+									<article class="side-card">
+										<img src="Food/web/menu/side-miso.webp" width="320" height="320" loading="lazy" decoding="async" alt="Miso Soup" />
+										<div class="side-body">
+											<h5 class="dish-name" data-i18n="side.miso">Miso Soup</h5>
+											<p class="dish-alt" data-i18n-alt="side.miso">味噌汁</p>
+											<p class="dish-desc" data-i18n="desc.miso">A warm, savory soup made with a traditional miso broth.</p>
+											<dl class="dish-prices">
+												<div class="dish-price"><dd>¥220</dd></div>
+											</dl>
+										</div>
+									</article>
+									<article class="side-card">
+										<img src="Food/web/menu/side-salad.webp" width="320" height="320" loading="lazy" decoding="async" alt="Salad" />
+										<div class="side-body">
+											<h5 class="dish-name" data-i18n="side.salad">Salad</h5>
+											<p class="dish-alt" data-i18n-alt="side.salad">サラダ</p>
+											<p class="dish-desc" data-i18n="desc.salad">Fresh cabbage, tomato, cucumber, and broccoli.</p>
+											<dl class="dish-prices">
+												<div class="dish-price"><dd>¥100</dd></div>
+											</dl>
+										</div>
+									</article>
 								</div>
 							</div>
 						</section>
 
 						<section class="menu-board" aria-labelledby="menu-group-drinks-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 class="drinks-menu-title" id="menu-group-drinks-title">Drinks</h3>
+								<h3 id="menu-group-drinks-title" class="drinks-menu-title" data-i18n="menu.group.drinks">Drinks</h3>
 							</div>
 							<div class="drinks-layout menu-board-grid">
-								<div class="menu-board-panel drinks-menu drinks-menu--separate" aria-labelledby="drinks-menu-title">
-								<div class="drinks-menu-heading">
-									<span class="showcase-label">Beer, Sake, &amp; Wine</span>
-									<h3 class="drinks-menu-title" id="drinks-menu-title">Alcoholic Drinks</h3>
-								</div>
-								<div class="drinks-list">
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Kirin Beer 500 ML</p>
-										</div>
-										<p class="drinks-item-price">¥900</p>
+								<div class="menu-board-panel drinks-menu">
+									<div class="drinks-menu-heading">
+										<span class="showcase-label" data-i18n="drinks.alcohol.label">Beer, Sake &amp; Highball</span>
+										<h4 class="drinks-menu-title" data-i18n="drinks.alcohol.title">Alcoholic Drinks</h4>
 									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Non-Alcohol Beer</p>
+									<div class="drinks-list">
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="drink.sake">Japanese Sake (Hakoneyama)</p>
+											<p class="drinks-item-price">¥500</p>
 										</div>
-										<p class="drinks-item-price">¥700</p>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="drink.nonalc">Non-Alcohol Beer</p>
+											<p class="drinks-item-price">¥700</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="drink.highball">Whiskey Highball (Pure / With Soda)</p>
+											<p class="drinks-item-price">¥800</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="drink.kirin">Kirin Ichiban Beer (500 ml)</p>
+											<p class="drinks-item-price">¥900</p>
+										</div>
 									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Whiskey Highball</p>
-										</div>
-										<p class="drinks-item-price">¥800</p>
+									<div class="drinks-menu-heading ala-carte-subheading">
+										<h5 class="drinks-menu-title" data-i18n="drink.plum">Plum Wine</h5>
 									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Sake (Glass)</p>
+									<div class="drinks-list">
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="drink.plum.rock">On the Rocks</p>
+											<p class="drinks-item-price">¥500</p>
 										</div>
-										<p class="drinks-item-price">¥500</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Plum Wine</p>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="drink.plum.soda">With Soda</p>
+											<p class="drinks-item-price">¥500</p>
 										</div>
-										<p class="drinks-item-price">¥500</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Red Wine Glass</p>
-										</div>
-										<p class="drinks-item-price">¥900</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Red Wine Bottle</p>
-										</div>
-										<p class="drinks-item-price">¥4,500</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">White Wine Glass</p>
-										</div>
-										<p class="drinks-item-price">¥800</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">White Wine Bottle</p>
-										</div>
-										<p class="drinks-item-price">¥4,000</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="menu-board-panel drinks-menu drinks-menu--separate" aria-labelledby="softdrinks-menu-title">
-								<div class="drinks-menu-heading">
-									<span class="showcase-label">Coffee, Tea, &amp; Juice</span>
-									<h3 class="drinks-menu-title" id="softdrinks-menu-title">Soft Drinks</h3>
-								</div>
-								<div class="drinks-list softdrinks-list">
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Coke</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Ginger Ale</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">100% Orange Juice</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Oolong Tea</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Green Tea</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Hot Coffee</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
-									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Iced Coffee</p>
-										</div>
-										<p class="drinks-item-price">¥300</p>
 									</div>
 								</div>
 
-								<div class="drinks-menu-heading ala-carte-subheading">
-									<h3 class="drinks-menu-title">Dessert</h3>
-								</div>
-								<div class="drinks-list dessert-list">
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Juna's Homemade Leche Flan (Whole)</p>
-										</div>
-										<p class="drinks-item-price">¥800</p>
+								<div class="menu-board-panel drinks-menu">
+									<div class="drinks-menu-heading">
+										<span class="showcase-label" data-i18n="wine.label">By the Glass or Bottle</span>
+										<h4 class="drinks-menu-title" data-i18n="wine.title">Wine</h4>
 									</div>
-									<div class="drinks-item">
-										<div>
-											<p class="drinks-item-name">Juna's Homemade Leche Flan (Half)</p>
+									<div class="wine-row wine-row--head">
+										<h5 class="drinks-menu-title" data-i18n="wine.red">Red Wine</h5>
+										<span data-i18n="wine.glass">Glass</span>
+										<span data-i18n="wine.bottle">Bottle</span>
+									</div>
+									<div class="drinks-list">
+										<div class="drinks-item wine-row">
+											<p class="drinks-item-name" data-i18n="wine.azusa">Azusa (Dry)</p>
+											<p class="drinks-item-price">¥1,000</p>
+											<p class="drinks-item-price">¥6,000</p>
 										</div>
-										<p class="drinks-item-price">¥400</p>
+										<div class="drinks-item wine-row">
+											<p class="drinks-item-name" data-i18n="wine.shinshu">Shinshu Black Queen (Semi-Dry)</p>
+											<p class="drinks-item-price">¥1,000</p>
+											<p class="drinks-item-price">¥6,000</p>
+										</div>
+										<div class="drinks-item wine-row">
+											<p class="drinks-item-name" data-i18n="wine.akadama">Akadama Sweet Red Wine</p>
+											<p class="drinks-item-price">¥700</p>
+											<p class="drinks-item-price">¥3,500</p>
+										</div>
+									</div>
+									<div class="wine-row wine-row--head">
+										<h5 class="drinks-menu-title" data-i18n="wine.white">White Wine</h5>
+										<span data-i18n="wine.glass">Glass</span>
+										<span data-i18n="wine.bottle">Bottle</span>
+									</div>
+									<div class="drinks-list">
+										<div class="drinks-item wine-row">
+											<p class="drinks-item-name" data-i18n="wine.sen">Grande Polaire Esprit de Vin Japonais Sen</p>
+											<p class="drinks-item-price">¥1,000</p>
+											<p class="drinks-item-price">¥6,000</p>
+										</div>
+										<div class="drinks-item wine-row">
+											<p class="drinks-item-name" data-i18n="wine.koshu">Koshu White Wine (Dry)</p>
+											<p class="drinks-item-price">¥1,000</p>
+											<p class="drinks-item-price">¥6,000</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="menu-board-panel drinks-menu">
+									<div class="drinks-menu-heading">
+										<span class="showcase-label" data-i18n="bev.label">Each ¥300</span>
+										<h4 class="drinks-menu-title" data-i18n="bev.title">Beverages</h4>
+									</div>
+									<div class="drinks-list">
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.coke">Coke (Regular / Zero)</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.ginger">Ginger Ale</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.orange">100% Orange Juice</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.oolong">Oolong Tea (Hot / Iced)</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.green">Green Tea (Hot / Iced)</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.hotcoffee">Hot Coffee</p>
+										</div>
+										<div class="drinks-item">
+											<p class="drinks-item-name" data-i18n="bev.icedcoffee">Iced Coffee</p>
+										</div>
 									</div>
 								</div>
 							</div>
+						</section>
+
+						<section class="menu-board" aria-labelledby="menu-group-dessert-title">
+							<div class="drinks-menu-heading menu-group-heading">
+								<h3 id="menu-group-dessert-title" class="drinks-menu-title" data-i18n="menu.group.dessert">Dessert</h3>
+							</div>
+							<div class="dish-grid dish-grid--pair">
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/dessert-large.webp" width="520" height="520" loading="lazy" decoding="async" alt="Juna&#x27;s Homemade Leche Flan (Large)" />
+									</div>
+									<div class="dish-body">
+										<h4 class="dish-name" data-i18n="dessert.large">Juna&#x27;s Homemade Leche Flan (Large)</h4>
+										<p class="dish-alt" data-i18n-alt="dessert.large">ジュナの自家製プリン (大)</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dd>¥800</dd></div>
+										</dl>
+									</div>
+								</article>
+								<article class="dish-card">
+									<div class="dish-media dish-media--round">
+										<img src="Food/web/menu/dessert-small.webp" width="520" height="520" loading="lazy" decoding="async" alt="Juna&#x27;s Homemade Leche Flan (Small)" />
+									</div>
+									<div class="dish-body">
+										<h4 class="dish-name" data-i18n="dessert.small">Juna&#x27;s Homemade Leche Flan (Small)</h4>
+										<p class="dish-alt" data-i18n-alt="dessert.small">ジュナの自家製プリン (小)</p>
+										<dl class="dish-prices">
+											<div class="dish-price"><dd>¥400</dd></div>
+										</dl>
+									</div>
+								</article>
 							</div>
 						</section>
 					</div>
@@ -571,7 +625,7 @@ Come and share a delicious meal with us!
 		<!-- Footer -->
 		<footer class="footer">
 			<div class="footer-content">
-				<img src="Logo/Logo_Final.png" alt="Ryu Hakone Restaurant logo" class="footer-logo" />
+				<img src="Logo/web/logo-dark.webp" width="640" height="640" loading="lazy" decoding="async" alt="Ryu Hakone Restaurant logo" class="footer-logo" />
 				<p class="footer-name">Ryu Hakone Restaurant</p>
 				<p class="footer-owner">By: Andy Ryu B. Abiko</p>
 				<p class="footer-address">Japan, 〒250-0311 Kanagawa, Ashigarashimo District, Hakone, Yumoto, 694-5 2F</p>
