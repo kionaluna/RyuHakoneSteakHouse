@@ -36,10 +36,8 @@
 		<!-- Minimal Navigation -->
 		<header class="navbar">
 			<div class="nav-left">
-				<a href="#menu" class="nav-item">Menu</a>
 				<a href="#about" class="nav-item">About</a>
-				<a href="#vision" class="nav-item">Vision</a>
-				<a href="#values" class="nav-item">Values</a>
+				<a href="#menu" class="nav-item">Menu</a>
 				<a href="#location" class="nav-item">Location</a>
 			</div>
 			<div class="nav-center">
@@ -82,9 +80,11 @@
 						<h3 class="about-label">About Us</h3>
 						<h2 class="about-subtitle">Welcome to Ryu Hakone Restaurant</h2>
 						<p class="story-text">
-At Ryu Hakone Restaurant, we bring together the comforting flavors of Japanese and Filipino cuisine. Our restaurant serves special set meals that combine the best of both worlds, giving you a unique and satisfying dining experience.
+At Ryu Hakone Restaurant, we serve the comforting flavors of Japanese cuisine. Our restaurant serves steak and hamburg set meals and à la carte dishes, giving you a satisfying dining experience.
 
-Located in the beautiful area of Hakone, we are dedicated to serving delicious food made with care and offering a warm, welcoming space for all our guests. Whether you are looking for a taste of traditional Japanese hospitality or the heartwarming flavors of the Philippines, our set meals are crafted to make you feel right at home.
+Located in the beautiful area of Hakone, we are dedicated to serving delicious food made with care and offering a warm, welcoming space for all our guests. Whether you are looking for a taste of traditional Japanese hospitality or a great meal, our dishes are crafted to make you feel right at home.
+
+The restaurant is owned by Andy Ryu B. Abiko, a 26-year-old half-Japanese and half-Filipino owner born on July 4, 2000. He grew fond of cooking because of his grandma, which inspired him to open Ryu Hakone Restaurant.
 
 Come and share a delicious meal with us!
 
@@ -95,26 +95,15 @@ Come and share a delicious meal with us!
 						</a>
 					</div>
 					<div class="story-right">
-						<div class="story-image-grid">
-							<div class="story-image-large">
-								<img src="Location/web/bldg.webp" width="1100" height="880" loading="lazy" decoding="async" alt="Ryu Hakone building exterior" class="story-photo" />
-							</div>
-							<div class="story-image-small">
-								<img src="Location/web/dining2.webp" width="600" height="800" loading="lazy" decoding="async" alt="Ryu Hakone dining room" class="story-photo" />
-							</div>
-							<div class="story-image-small">
-								<img src="Location/web/andy.webp" width="600" height="843" loading="lazy" decoding="async" alt="Andy Ryu B. Abiko" class="story-photo" />
-							</div>
-							<div class="story-image-small">
-								<img src="Food/web/food.webp" width="600" height="450" loading="lazy" decoding="async" alt="Ryu Hakone Menu" class="story-photo" />
-							</div>
+						<div class="story-portrait">
+							<img src="Location/web/andy-cover.webp" width="900" height="1275" loading="lazy" decoding="async" alt="Andy Ryu B. Abiko, owner of Ryu Hakone Restaurant" class="story-photo" />
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<!-- Vision and Mission Section -->
-			<section class="vision-section" id="vision">
+			<section class="vision-section" id="vision" data-nav="about">
 				<div class="vision-container">
 					<div class="vertical-section-mark" aria-hidden="true">PURPOSE</div>
 					<div class="section-heading">
@@ -138,7 +127,7 @@ Come and share a delicious meal with us!
 			</section>
 
 			<!-- Core Values Section -->
-			<section class="values-section" id="values">
+			<section class="values-section" id="values" data-nav="about">
 				<div class="values-container">
 					<div class="vertical-section-mark" aria-hidden="true">VALUES</div>
 					<div class="showcase-header values-header">
@@ -181,7 +170,7 @@ Come and share a delicious meal with us!
 				<div class="menu-container">
 					<div class="vertical-section-mark" aria-hidden="true">MENU</div>
 					<div class="section-heading">
-						<span class="showcase-label">Steak &amp; Japanese Comfort</span>
+						<span class="showcase-label">Steak &amp; Hamburg</span>
 						<h2 class="section-title">WHAT'S ON THE MENU?</h2>
 					</div>
 					<p class="menu-intro">
@@ -191,7 +180,7 @@ Come and share a delicious meal with us!
 					<div class="menu-extras">
 						<section class="menu-board" aria-labelledby="menu-group-set-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 id="menu-group-set-title" class="drinks-menu-title" data-i18n="menu.group.set">Set Menu</h3>
+								<h3 id="menu-group-set-title" class="drinks-menu-title" data-i18n="menu.group.set">SET MENU</h3>
 							</div>
 							<p class="menu-group-note" data-i18n="menu.set.note">Served with rice, soup, and salad</p>
 							<div class="dish-grid">
@@ -257,11 +246,11 @@ Come and share a delicious meal with us!
 								</article>
 								<article class="dish-card">
 									<div class="dish-media dish-media--tray">
-										<img src="Food/web/menu/set-5.webp" width="720" height="519" loading="lazy" decoding="async" alt="Cheese-Filled Hamburg Steak Set with Demi-Glace Sauce" />
+										<img src="Food/web/menu/set-5.webp" width="720" height="519" loading="lazy" decoding="async" alt="Japanese Hamburg Steak with Cheese Filling and Demi-Glace Sauce Set" />
 									</div>
 									<div class="dish-body">
 										<span class="dish-no">05</span>
-										<h4 class="dish-name" data-i18n="dish.set5">Cheese-Filled Hamburg Steak Set with Demi-Glace Sauce</h4>
+										<h4 class="dish-name" data-i18n="dish.set5">Japanese Hamburg Steak with Cheese Filling and Demi-Glace Sauce Set</h4>
 										<p class="dish-alt" data-i18n-alt="dish.set5">チーズインデミグラスハンバーグセット</p>
 										<p class="dish-desc" data-i18n="desc.cheese">A tender, flavorful patty that melts in your mouth. This classic Japanese comfort dish is made with a pork and beef blend, filled with cheese and finished with demi-glace sauce.</p>
 										<dl class="dish-prices">
@@ -272,7 +261,7 @@ Come and share a delicious meal with us!
 								<article class="dish-card">
 									<div class="dish-media dish-media--tray dish-media--pair" role="button" tabindex="0" aria-label="Show the other sauce">
 										<img class="is-active" data-variant="1" src="Food/web/menu/set-6-1.webp" width="720" height="516" loading="lazy" decoding="async" alt="Japanese Hamburg Steak Set (100% Beef) — with demi-glace sauce" />
-										<img data-variant="2" aria-hidden="true" src="Food/web/menu/set-6-2.webp" width="720" height="517" loading="lazy" decoding="async" alt="Japanese Hamburg Steak Set (100% Beef) — with grated radish &amp; ponzu sauce" />
+										<img data-variant="2" aria-hidden="true" src="Food/web/menu/set-6-2.webp" width="720" height="517" loading="lazy" decoding="async" alt="Japanese Hamburg Steak Set (100% Beef) — with radish and ponzu sauce" />
 									</div>
 									<div class="dish-body">
 										<span class="dish-no">06</span>
@@ -281,7 +270,7 @@ Come and share a delicious meal with us!
 										<p class="dish-desc" data-i18n="desc.beef100">A tender, flavorful patty made with 100% beef, served with your choice of sauce.</p>
 										<ul class="dish-variants">
 											<li><button type="button" class="dish-variant" data-variant="1" aria-pressed="true"><span class="dish-variant-no">6.1</span><span data-i18n="variant.demi">With demi-glace sauce</span></button></li>
-											<li><button type="button" class="dish-variant" data-variant="2" aria-pressed="false"><span class="dish-variant-no">6.2</span><span data-i18n="variant.ponzu">With grated radish &amp; ponzu sauce</span></button></li>
+											<li><button type="button" class="dish-variant" data-variant="2" aria-pressed="false"><span class="dish-variant-no">6.2</span><span data-i18n="variant.ponzu">With radish and ponzu sauce</span></button></li>
 										</ul>
 										<dl class="dish-prices">
 											<div class="dish-price"><dd>¥2,200</dd></div>
@@ -293,7 +282,7 @@ Come and share a delicious meal with us!
 
 						<section class="menu-board" aria-labelledby="menu-group-ala-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 id="menu-group-ala-title" class="drinks-menu-title" data-i18n="menu.group.ala">Ala Carte</h3>
+								<h3 id="menu-group-ala-title" class="drinks-menu-title" data-i18n="menu.group.ala">ALA CARTE</h3>
 							</div>
 							<div class="dish-grid">
 								<article class="dish-card">
@@ -358,11 +347,11 @@ Come and share a delicious meal with us!
 								</article>
 								<article class="dish-card">
 									<div class="dish-media dish-media--round">
-										<img src="Food/web/menu/ala-5.webp" width="520" height="520" loading="lazy" decoding="async" alt="Cheese-Filled Hamburg Steak with Demi-Glace Sauce" />
+										<img src="Food/web/menu/ala-5.webp" width="520" height="520" loading="lazy" decoding="async" alt="Japanese Hamburg Steak with Cheese Filling and Demi-Glaced Sauce" />
 									</div>
 									<div class="dish-body">
 										<span class="dish-no">05</span>
-										<h4 class="dish-name" data-i18n="dish.ala5">Cheese-Filled Hamburg Steak with Demi-Glace Sauce</h4>
+										<h4 class="dish-name" data-i18n="dish.ala5">Japanese Hamburg Steak with Cheese Filling and Demi-Glaced Sauce</h4>
 										<p class="dish-alt" data-i18n-alt="dish.ala5">チーズインデミグラスハンバーグ</p>
 										<p class="dish-desc" data-i18n="desc.cheese">A tender, flavorful patty that melts in your mouth. This classic Japanese comfort dish is made with a pork and beef blend, filled with cheese and finished with demi-glace sauce.</p>
 										<dl class="dish-prices">
@@ -373,7 +362,7 @@ Come and share a delicious meal with us!
 								<article class="dish-card">
 									<div class="dish-media dish-media--round dish-media--pair" role="button" tabindex="0" aria-label="Show the other sauce">
 										<img class="is-active" data-variant="1" src="Food/web/menu/ala-6-1.webp" width="520" height="520" loading="lazy" decoding="async" alt="Japanese Hamburg Steak (100% Beef) — with demi-glace sauce" />
-										<img data-variant="2" aria-hidden="true" src="Food/web/menu/ala-6-2.webp" width="520" height="520" loading="lazy" decoding="async" alt="Japanese Hamburg Steak (100% Beef) — with grated radish &amp; ponzu sauce" />
+										<img data-variant="2" aria-hidden="true" src="Food/web/menu/ala-6-2.webp" width="520" height="520" loading="lazy" decoding="async" alt="Japanese Hamburg Steak (100% Beef) — with radish and ponzu sauce" />
 									</div>
 									<div class="dish-body">
 										<span class="dish-no">06</span>
@@ -382,7 +371,7 @@ Come and share a delicious meal with us!
 										<p class="dish-desc" data-i18n="desc.beef100">A tender, flavorful patty made with 100% beef, served with your choice of sauce.</p>
 										<ul class="dish-variants">
 											<li><button type="button" class="dish-variant" data-variant="1" aria-pressed="true"><span class="dish-variant-no">6.1</span><span data-i18n="variant.demi">With demi-glace sauce</span></button></li>
-											<li><button type="button" class="dish-variant" data-variant="2" aria-pressed="false"><span class="dish-variant-no">6.2</span><span data-i18n="variant.ponzu">With grated radish &amp; ponzu sauce</span></button></li>
+											<li><button type="button" class="dish-variant" data-variant="2" aria-pressed="false"><span class="dish-variant-no">6.2</span><span data-i18n="variant.ponzu">With radish and ponzu sauce</span></button></li>
 										</ul>
 										<dl class="dish-prices">
 											<div class="dish-price"><dd>¥1,900</dd></div>
@@ -434,13 +423,12 @@ Come and share a delicious meal with us!
 
 						<section class="menu-board" aria-labelledby="menu-group-drinks-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 id="menu-group-drinks-title" class="drinks-menu-title" data-i18n="menu.group.drinks">Drinks</h3>
+								<h3 id="menu-group-drinks-title" class="drinks-menu-title" data-i18n="menu.group.drinks">ALCOHOLIC DRINKS</h3>
 							</div>
-							<div class="drinks-layout menu-board-grid">
+							<div class="drinks-layout menu-board-grid menu-board-grid--pair">
 								<div class="menu-board-panel drinks-menu">
 									<div class="drinks-menu-heading">
-										<span class="showcase-label" data-i18n="drinks.alcohol.label">Beer, Sake &amp; Highball</span>
-										<h4 class="drinks-menu-title" data-i18n="drinks.alcohol.title">Alcoholic Drinks</h4>
+										<h4 class="drinks-menu-title" data-i18n="drinks.alcohol.title">Beer, Sake &amp; Whiskey</h4>
 									</div>
 									<div class="drinks-list">
 										<div class="drinks-item">
@@ -477,7 +465,6 @@ Come and share a delicious meal with us!
 
 								<div class="menu-board-panel drinks-menu">
 									<div class="drinks-menu-heading">
-										<span class="showcase-label" data-i18n="wine.label">By the Glass or Bottle</span>
 										<h4 class="drinks-menu-title" data-i18n="wine.title">Wine</h4>
 									</div>
 									<div class="wine-row wine-row--head">
@@ -520,11 +507,17 @@ Come and share a delicious meal with us!
 										</div>
 									</div>
 								</div>
+							</div>
+						</section>
 
+						<section class="menu-board" aria-labelledby="menu-group-bev-title">
+							<div class="drinks-menu-heading menu-group-heading">
+								<h3 id="menu-group-bev-title" class="drinks-menu-title" data-i18n="menu.group.bev">BEVERAGES</h3>
+							</div>
+							<div class="drinks-layout menu-board-grid menu-board-grid--single">
 								<div class="menu-board-panel drinks-menu">
 									<div class="drinks-menu-heading">
-										<span class="showcase-label" data-i18n="bev.label">Each ¥300</span>
-										<h4 class="drinks-menu-title" data-i18n="bev.title">Beverages</h4>
+										<h4 class="drinks-menu-title" data-i18n="bev.label">Each ¥300</h4>
 									</div>
 									<div class="drinks-list">
 										<div class="drinks-item">
@@ -555,7 +548,7 @@ Come and share a delicious meal with us!
 
 						<section class="menu-board" aria-labelledby="menu-group-dessert-title">
 							<div class="drinks-menu-heading menu-group-heading">
-								<h3 id="menu-group-dessert-title" class="drinks-menu-title" data-i18n="menu.group.dessert">Dessert</h3>
+								<h3 id="menu-group-dessert-title" class="drinks-menu-title" data-i18n="menu.group.dessert">DESSERTS</h3>
 							</div>
 							<div class="dish-grid dish-grid--pair">
 								<article class="dish-card">
@@ -598,11 +591,11 @@ Come and share a delicious meal with us!
 							<p>Japan, 〒250-0311 Kanagawa, Ashigarashimo District, Hakone, Yumoto, 694-5 2F</p>
 
 							<div class="visit-schedule">
-								<h3 class="visit-schedule-title">We are Open</h3>
-								<p class="visit-schedule-hours">Lunch: 11:00 AM - 2:00 PM</p>
-								<p class="visit-last-order">Last order: 1:30 PM</p>
-								<p class="visit-schedule-hours">Dinner: 5:00 PM - 8:00 PM</p>
-								<p class="visit-last-order">Last Order: 7:30 PM</p>
+								<h3 class="visit-schedule-title">Opening Hours</h3>
+								<p class="visit-schedule-hours">Lunch: 11:00 - 15:00</p>
+								<p class="visit-last-order">Last order: 13:30</p>
+								<p class="visit-schedule-hours">Dinner: 17:00 - 20:00</p>
+								<p class="visit-last-order">Last order: 19:30</p>
 								<p class="visit-schedule-days">Closed every Wednesday and Thursday</p>
 							</div>
 						</div>

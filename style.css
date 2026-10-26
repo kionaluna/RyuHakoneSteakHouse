@@ -417,25 +417,14 @@ html[data-theme='dark'] .theme-toggle-icon { rotate: 180deg; }
 
 .story-text { white-space: pre-line; font-size: 1rem; margin-bottom: 0.8rem; }
 
-.story-image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1.4fr 1fr;
-  gap: 1rem;
-  aspect-ratio: 1 / 1;
-}
-
-.story-image-large { grid-column: 1 / -1; }
-
-.story-image-large,
-.story-image-small {
+.story-portrait {
   position: relative;
+  max-width: 480px;
+  margin-left: auto;
   overflow: hidden;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-
-.story-image-large { border-radius: 160px 160px var(--radius) var(--radius); }
 
 .story-photo {
   width: 100%;
@@ -444,8 +433,7 @@ html[data-theme='dark'] .theme-toggle-icon { rotate: 180deg; }
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.story-image-large:hover .story-photo,
-.story-image-small:hover .story-photo { transform: scale(1.04); }
+.story-portrait:hover .story-photo { transform: scale(1.04); }
 
 /* ---------- Vision & Mission ---------- */
 .vision-section { padding: 8rem 3rem; }
@@ -798,6 +786,9 @@ html[data-theme='dark'] .theme-toggle-icon { rotate: 180deg; }
   gap: 1.6rem;
   align-items: start;
 }
+
+.menu-board-grid--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.menu-board-grid--single { grid-template-columns: minmax(0, 440px); justify-content: center; }
 
 .menu-board-panel {
   position: relative;
@@ -1319,6 +1310,7 @@ html.no-intro { --intro-delay: 0s; }
 @media (max-width: 1100px) {
   .values-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .dish-grid, .menu-board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .menu-board-grid--single { grid-template-columns: minmax(0, 440px); }
   .sides-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 }
 
@@ -1330,6 +1322,7 @@ html.no-intro { --intro-delay: 0s; }
 
   .story-section, .vision-section, .values-section, .menu-section, .location-section { padding: 6rem 1.5rem; }
   .story-container, .location-details, .vision-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .story-portrait { margin: 0 auto; width: 100%; }
   .vision-grid, .location-details { gap: 1.5rem; }
 }
 
@@ -1372,7 +1365,5 @@ html.no-intro { --intro-delay: 0s; }
   .values-grid { grid-template-columns: 1fr; }
   .value-item:last-child { max-width: none; }
   .vision-panel { padding: 2.4rem 1.6rem 2rem; }
-  .story-image-grid { gap: 0.6rem; }
-  .story-image-large { border-radius: 110px 110px var(--radius) var(--radius); }
   .footer { padding: 4rem 1rem 2rem; }
 }
