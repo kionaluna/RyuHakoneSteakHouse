@@ -417,14 +417,46 @@ html[data-theme='dark'] .theme-toggle-icon { rotate: 180deg; }
 
 .story-text { white-space: pre-line; font-size: 1rem; margin-bottom: 0.8rem; }
 
+.story-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1.4fr 1fr;
+  gap: 1rem;
+  aspect-ratio: 1 / 1;
+}
+
+.story-image-large { grid-column: 1 / -1; }
+
+.story-image-large,
+.story-image-wide,
+.story-image-small {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.story-image-large { border-radius: 160px 160px var(--radius) var(--radius); }
+
 .story-portrait {
   position: relative;
-  max-width: 480px;
+  max-width: 460px;
   margin-left: auto;
   overflow: hidden;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
+
+/* the photo grid runs as one row under the About text and portrait */
+.story-gallery { max-width: 1200px; margin: 5rem auto 0; }
+
+.story-gallery .story-image-grid {
+  grid-template-columns: 1.6fr 1.6fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  aspect-ratio: 5 / 1;
+}
+
+.story-gallery .story-image-large { grid-column: auto; }
 
 .story-photo {
   width: 100%;
@@ -433,6 +465,9 @@ html[data-theme='dark'] .theme-toggle-icon { rotate: 180deg; }
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.story-image-large:hover .story-photo,
+.story-image-wide:hover .story-photo,
+.story-image-small:hover .story-photo,
 .story-portrait:hover .story-photo { transform: scale(1.04); }
 
 /* ---------- Vision & Mission ---------- */
@@ -1323,6 +1358,10 @@ html.no-intro { --intro-delay: 0s; }
   .story-section, .vision-section, .values-section, .menu-section, .location-section { padding: 6rem 1.5rem; }
   .story-container, .location-details, .vision-grid { grid-template-columns: 1fr; gap: 3rem; }
   .story-portrait { margin: 0 auto; width: 100%; }
+  .story-gallery { margin-top: 3rem; }
+  .story-gallery .story-image-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: none; aspect-ratio: auto; }
+  .story-gallery .story-image-large, .story-gallery .story-image-wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+  .story-gallery .story-image-small { aspect-ratio: 3 / 4; }
   .vision-grid, .location-details { gap: 1.5rem; }
 }
 
@@ -1365,5 +1404,7 @@ html.no-intro { --intro-delay: 0s; }
   .values-grid { grid-template-columns: 1fr; }
   .value-item:last-child { max-width: none; }
   .vision-panel { padding: 2.4rem 1.6rem 2rem; }
+  .story-image-grid { gap: 0.6rem; }
+  .story-image-large { border-radius: 110px 110px var(--radius) var(--radius); }
   .footer { padding: 4rem 1rem 2rem; }
 }
